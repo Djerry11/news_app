@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'News App',
-      routerConfig: router,
+      routerConfig: AppRoutes().router,
     );
   }
 }
