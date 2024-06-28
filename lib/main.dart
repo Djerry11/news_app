@@ -12,8 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'News App',
-      routerConfig: AppRoutes().router,
+      routerConfig: AppRoutes.router,
+      themeMode: ThemeMode.light,
+      theme: ThemeData(),
     );
   }
 }
