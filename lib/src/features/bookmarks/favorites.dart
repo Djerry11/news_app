@@ -1,2 +1,2 @@
-export './domain/favorite_model.dart';
-export './presentation/favorites_page.dart';
+export 'domain/favorite_model.dart';
+export 'presentation/bookmark_page.dart';

@@ -4,7 +4,7 @@ import 'package:news_app/src/features/onboarding/presentation/onboarding_page.da
 import 'package:news_app/src/routes/scaff_nav_bar.dart';
 import '../features/home/presentation/home_page.dart';
 import '../features/home/presentation/article_detail_page.dart';
-import '../features/favorites/presentation/favorites_page.dart';
+import '../features/bookmarks/presentation/bookmark_page.dart';
 
 class AppRoutes {
   AppRoutes._();
