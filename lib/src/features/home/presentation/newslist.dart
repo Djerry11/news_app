@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/src/features/home/presentation/dummy_news.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:news_app/src/providers/news_provider.dart';
 import 'news_tile.dart';
 
-class NewsList extends StatelessWidget {
+class NewsList extends ConsumerWidget {
   const NewsList({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final articlesAsyncValue = ref.watch(articlesProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -17,19 +19,22 @@ class NewsList extends StatelessWidget {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
-        ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return NewsTile(
-              imageUrl: newsItems[index]['urlToImage'],
-              title: newsItems[index]['title'],
-              author: newsItems[index]['author'],
-              date: newsItems[index]['publishedAt'],
-              sourceName: newsItems[index]['source']['name'],
+        articlesAsyncValue.when(
+          data: (articles) {
+            return ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: articles.length,
+              itemBuilder: (context, index) {
+                final article = articles[index];
+                return NewsTile(
+                  article: article,
+                );
+              },
             );
           },
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (error, stack) => Center(child: Text('Error: $error')),
         ),
       ],
     );

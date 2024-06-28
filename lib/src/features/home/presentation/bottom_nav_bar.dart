@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/src/features/bookmarks/favorites.dart';
-import '../home.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});

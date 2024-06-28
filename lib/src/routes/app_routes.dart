@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news_app/src/features/discover/presentation/discover_page.dart';
 import 'package:news_app/src/features/onboarding/presentation/onboarding_page.dart';
+import 'package:news_app/src/features/web_articles/presentation/webview_article.dart';
 import 'package:news_app/src/routes/scaff_nav_bar.dart';
 import '../features/home/presentation/home_page.dart';
 import '../features/home/presentation/article_detail_page.dart';
-import '../features/bookmarks/presentation/bookmark_page.dart';
+import '../features/favorites/presentation/bookmark_page.dart';
 
 class AppRoutes {
   AppRoutes._();
@@ -53,9 +55,9 @@ class AppRoutes {
             navigatorKey: _catNavigatorKey,
             routes: [
               GoRoute(
-                path: '/category',
-                name: 'category',
-                builder: (context, state) => const FavoritesPage(),
+                path: '/discover',
+                name: 'discover',
+                builder: (context, state) => const DiscoverPage(),
               ),
             ],
           ),
@@ -66,7 +68,7 @@ class AppRoutes {
               GoRoute(
                 path: '/favorites',
                 name: 'favorites',
-                builder: (context, state) => const FavoritesPage(),
+                builder: (context, state) => const BookmarkPage(),
               ),
             ],
           ),
@@ -77,7 +79,7 @@ class AppRoutes {
               GoRoute(
                 path: '/profile',
                 name: 'profile',
-                builder: (context, state) => const FavoritesPage(),
+                builder: (context, state) => const BookmarkPage(),
               ),
             ],
           )
@@ -86,11 +88,11 @@ class AppRoutes {
 
       //Article details
       GoRoute(
-        path: '/article/:articleId',
-        name: 'articleDetail',
+        path: '/webView/:article',
+        name: 'webViewArticle',
         builder: (context, state) {
-          final id = state.pathParameters['articleId']!;
-          return ArticleDetailPage(articleId: id);
+          final article = state.pathParameters['articleUrl']!;
+          return const WebViewArticle();
         },
       ),
     ],

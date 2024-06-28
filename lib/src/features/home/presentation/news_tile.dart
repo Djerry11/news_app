@@ -1,110 +1,126 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:news_app/src/core/models/articles.dart';
+import 'package:news_app/src/providers/provider.dart';
 
-class NewsTile extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-  final String author;
-  final String date;
-  final String sourceName;
-  final bool isSaved;
-
-  const NewsTile({
-    super.key,
-    required this.imageUrl,
-    required this.title,
-    required this.author,
-    required this.date,
-    required this.sourceName,
-    this.isSaved = true,
-  });
+class NewsTile extends ConsumerWidget {
+  final Articles article;
+  const NewsTile({super.key, required this.article});
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        height: 90,
-        // color: Colors.grey,
-        width: double.infinity,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.network(
-                imageUrl,
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    sourceName,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    author,
-                    style: TextStyle(
-                      color: Colors.grey.shade600,
-                      fontSize: 8,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      const Icon(Icons.calendar_today, size: 8),
-                      Text(
-                        date.split('T').first,
-                        style:
-                            TextStyle(color: Colors.grey.shade600, fontSize: 8),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final bookmarkNotifier = ref.read(bookmarkProvider.notifier);
+    final isBookmarked =
+        ref.watch(bookmarkProvider).any((a) => a.url == article.url);
+
+    return GestureDetector(
+      onTap: () {
+        context.pushNamed('webViewArticle',
+            pathParameters: {'articleUrl': '${article.url}'});
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          height: 90,
+          width: double.infinity,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //Image Container for the article
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: article.urlToImage != null
+                    ? Image.network(
+                        article.urlToImage!,
+                        width: 80,
+                        height: 80,
+                        fit: BoxFit.cover,
+                      )
+                    //If image is not available show
+                    : Container(
+                        width: 80,
+                        height: 80,
+                        color: Colors.grey,
+                        child: const Icon(Icons.image, color: Colors.white),
                       ),
-                      const SizedBox(width: 8),
-                      const Icon(Icons.timelapse, size: 8),
-                      Text(
-                        date.split('T').last.split('Z').first,
-                        style:
-                            TextStyle(color: Colors.grey.shade600, fontSize: 8),
-                      ),
-                      const SizedBox(width: 8),
-                    ],
-                  ),
-                ],
               ),
-            ),
-            Consumer(builder: (context, ref, child) {
-              // ref.read(isSavedProvider).state;
-              //Todo:
-              return IconButton(
-                onPressed: () {},
+              const SizedBox(width: 8),
+              //News Details section
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      article.source?.name ?? 'Unknown Source',
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      article.title ?? 'No title',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      article.author ?? 'Unknown Author',
+                      style: TextStyle(
+                        color: Colors.grey.shade600,
+                        fontSize: 8,
+                      ),
+                    ),
+
+                    //Date and Time of the article
+                    Row(
+                      children: [
+                        const Icon(Icons.calendar_today, size: 8),
+                        Text(
+                          article.publishedAt?.split('T').first ?? '',
+                          style: TextStyle(
+                              color: Colors.grey.shade600, fontSize: 8),
+                        ),
+                        const SizedBox(width: 8),
+                        const Icon(Icons.timelapse, size: 8),
+                        Text(
+                          article.publishedAt
+                                  ?.split('T')
+                                  .last
+                                  .split('Z')
+                                  .first ??
+                              '',
+                          style: TextStyle(
+                              color: Colors.grey.shade600, fontSize: 8),
+                        ),
+                        const SizedBox(width: 8),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              //Bookmark button for the article
+              IconButton(
+                onPressed: () {
+                  isBookmarked
+                      ? bookmarkNotifier.removeBookmark(article)
+                      : bookmarkNotifier.addBookmark(article);
+                },
                 icon: Icon(
-                  isSaved
-                      ? Icons.bookmark_rounded
-                      : Icons.bookmark_outline_rounded,
-                  color: isSaved ? Colors.green : Colors.grey,
+                  isBookmarked
+                      ? Icons.favorite
+                      : Icons.favorite_border_outlined,
+                  color: isBookmarked ? Colors.red : Colors.green,
                   size: 30,
                 ),
-              );
-            }),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

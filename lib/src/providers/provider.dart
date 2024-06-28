@@ -15,8 +15,8 @@ class TrendingIndex extends StateNotifier<int> {
 
   int get index => state;
 }
-// Provider to change the bookmark status
 
+// Provider to change the bookmark status
 final bookmarkProvider =
     StateNotifierProvider<BookmarkNotifier, List<Articles>>((ref) {
   return BookmarkNotifier();
@@ -35,5 +35,9 @@ class BookmarkNotifier extends StateNotifier<List<Articles>> {
 
   bool isBookmarked(Articles article) {
     return state.any((a) => a.url == article.url);
+  }
+
+  void printBookmark() {
+    print(state.length);
   }
 }
