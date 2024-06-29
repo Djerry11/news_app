@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/core/models/articles.dart';
 import 'package:news_app/src/features/discover/presentation/discover_page.dart';
+import 'package:news_app/src/features/discover/presentation/news_discover_screen.dart';
 import 'package:news_app/src/features/onboarding/presentation/onboarding_page.dart';
 import 'package:news_app/src/features/web_articles/presentation/webview_article.dart';
 import 'package:news_app/src/routes/scaff_nav_bar.dart';
+import 'package:news_app/src/routes/test.dart';
 import '../features/home/presentation/home_page.dart';
 import '../features/favorites/presentation/bookmark_page.dart';
 
@@ -81,7 +83,7 @@ class AppRoutes {
               GoRoute(
                 path: '/profile',
                 name: 'profile',
-                builder: (context, state) => const BookmarkPage(),
+                builder: (context, state) => const NewsSearchScreen(),
               ),
             ],
           ),

@@ -49,6 +49,9 @@ dependencies:
   webview_flutter_platform_interface: ^2.10.0
   webview_flutter_wkwebview: ^3.13.1
   url_launcher: ^6.3.0
+  riverpod_generator: ^2.4.0
+  riverpod_annotation: ^2.3.5
+  shimmer: ^3.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

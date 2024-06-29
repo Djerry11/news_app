@@ -18,6 +18,35 @@ class _WebViewArticleState extends State<WebViewArticle> {
   var loadingPercentage = 0;
   late final WebViewController controller;
 
+  @override
+  void initState() {
+    super.initState();
+    controller = WebViewController()
+      ..setNavigationDelegate(NavigationDelegate(
+        onPageStarted: (url) {
+          setState(() {
+            loadingPercentage = 0;
+          });
+        },
+        onProgress: (progress) {
+          setState(() {
+            loadingPercentage = progress;
+          });
+        },
+        onPageFinished: (url) {
+          setState(() {
+            loadingPercentage = 100;
+          });
+        },
+      ))
+      ..loadRequest(Uri.parse(widget.article.url!));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   void _openBrowser() async {
     final url = widget.article.url!;
     final webUri = Uri.parse(url);
@@ -50,30 +79,6 @@ class _WebViewArticleState extends State<WebViewArticle> {
         );
       },
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    controller = WebViewController()
-      ..setNavigationDelegate(NavigationDelegate(
-        onPageStarted: (url) {
-          setState(() {
-            loadingPercentage = 0;
-          });
-        },
-        onProgress: (progress) {
-          setState(() {
-            loadingPercentage = progress;
-          });
-        },
-        onPageFinished: (url) {
-          setState(() {
-            loadingPercentage = 100;
-          });
-        },
-      ))
-      ..loadRequest(Uri.parse(widget.article.url!));
   }
 
   @override
