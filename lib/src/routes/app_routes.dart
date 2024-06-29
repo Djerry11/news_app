@@ -1,11 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news_app/src/core/models/articles.dart';
 import 'package:news_app/src/features/discover/presentation/discover_page.dart';
 import 'package:news_app/src/features/onboarding/presentation/onboarding_page.dart';
 import 'package:news_app/src/features/web_articles/presentation/webview_article.dart';
 import 'package:news_app/src/routes/scaff_nav_bar.dart';
 import '../features/home/presentation/home_page.dart';
-import '../features/home/presentation/article_detail_page.dart';
 import '../features/favorites/presentation/bookmark_page.dart';
 
 class AppRoutes {
@@ -15,19 +17,19 @@ class AppRoutes {
   static final _favNavigatorKey =
       GlobalKey<NavigatorState>(debugLabel: 'favKey');
   static final _homeNavigatorKey =
-      GlobalKey<NavigatorState>(debugLabel: 'homKey');
+      GlobalKey<NavigatorState>(debugLabel: 'homeKey');
   static final _catNavigatorKey =
-      GlobalKey<NavigatorState>(debugLabel: 'homKey');
+      GlobalKey<NavigatorState>(debugLabel: 'catKey');
   static final _profileNavigatorKey =
-      GlobalKey<NavigatorState>(debugLabel: 'homKey');
+      GlobalKey<NavigatorState>(debugLabel: 'profileKey');
 
   static final router = GoRouter(
-    initialLocation: '/home',
+    initialLocation: '/discover',
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       GoRoute(
         path: '/',
-        name: '/',
+        name: 'onboarding',
         builder: (context, state) => const OnboardingPage(),
       ),
 
@@ -39,7 +41,7 @@ class AppRoutes {
           );
         },
         branches: <StatefulShellBranch>[
-          // Home
+          // Home Branch
           StatefulShellBranch(
             navigatorKey: _homeNavigatorKey,
             routes: [
@@ -50,7 +52,7 @@ class AppRoutes {
               ),
             ],
           ),
-          // Favorites Branch
+          // Discover Branch
           StatefulShellBranch(
             navigatorKey: _catNavigatorKey,
             routes: [
@@ -72,7 +74,7 @@ class AppRoutes {
               ),
             ],
           ),
-          // Favorites Branch
+          // Profile Branch
           StatefulShellBranch(
             navigatorKey: _profileNavigatorKey,
             routes: [
@@ -82,17 +84,25 @@ class AppRoutes {
                 builder: (context, state) => const BookmarkPage(),
               ),
             ],
-          )
+          ),
         ],
       ),
 
-      //Article details
+      // Article details
       GoRoute(
-        path: '/webView/:article',
+        path: '/webViewArticle',
         name: 'webViewArticle',
         builder: (context, state) {
-          final article = state.pathParameters['articleUrl']!;
-          return const WebViewArticle();
+          final articleJson = state.uri.queryParameters['article'];
+          if (articleJson == null) {
+            return const Scaffold(
+              body: Center(
+                child: Text('Article data not found'),
+              ),
+            );
+          }
+          final jsonArticle = jsonDecode(articleJson);
+          return WebViewArticle(article: Articles.fromJson(jsonArticle));
         },
       ),
     ],

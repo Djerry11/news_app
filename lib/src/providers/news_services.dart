@@ -19,7 +19,9 @@ class NewsService {
           .where((article) =>
               article.title?.isNotEmpty == true &&
               article.description?.isNotEmpty == true &&
-              article.urlToImage?.isNotEmpty == true)
+              article.urlToImage?.isNotEmpty == true &&
+              article.publishedAt?.isNotEmpty == true &&
+              article.source?.name?.isNotEmpty == true)
           .toList();
     } else {
       throw Exception('Failed to load top headlines');

@@ -1,212 +1,46 @@
 {
   "status": "ok",
-  "totalResults": 68,
+  "totalResults": 11029,
   "articles": [
     {
-      "source": { "id": null, "name": "Yahoo Entertainment" },
-      "author": "Pras Subramanian",
-      "title": "CDK Global works to restore dealer software after hack, but the auto sales fallout still looms - Yahoo Finance",
-      "description": "The CDK Global cyberattack outage that crippled dealerships across North America appears to be finally on a path toward resolution, but lost sales and...",
-      "url": "https://finance.yahoo.com/news/cdk-global-works-to-restore-dealer-software-after-hack-but-the-auto-sales-fallout-still-looms-170520118.html",
-      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/8a5eceIKkFiu1qRN514EpQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDA-/https://s.yimg.com/os/creatr-uploaded-images/2024-06/f3269190-3494-11ef-973f-0ae4c7f7d6b2",
-      "publishedAt": "2024-06-27T17:05:20Z",
-      "content": "The CDK Global (BBU) cyberattack outage, which crippled dealerships across North America, appears to be on a path toward resolution. But the damage has been done: Lost sales and service revenue could… [+3961 chars]"
+      "source": { "id": null, "name": "Www.nzz.ch" },
+      "author": "Herbie Schmidt (hdt)",
+      "title": "Lucid Motors: Mit günstigerem Einstiegsmodell soll die Elektrolimousine in Europa auf Erfolgskurs kommen",
+      "description": "Der amerikanische Lucid Air ist seit 2023 in Europa erhältlich. Trotz beeindruckenden technischen Daten blieb der Durchbruch bisher aus. Mit einem heckgetriebenen Modell sollen mehr europäische Kunden angelockt werden.",
+      "url": "https://www.nzz.ch/mobilitaet/lucid-mit-heckantrieb-die-eroberung-europas-beginnt-ld.1836856",
+      "urlToImage": "https://img.nzz.ch/2024/06/27/7baacdb2-8b31-420d-812d-139696b6a596.jpeg?width=1200&height=674&fit=bounds&quality=75&auto=webp&crop=3846,2163,x2032,y1886&wmark=nzz",
+      "publishedAt": "2024-06-28T03:30:00Z",
+      "content": "Das fliessende Design der Lucid-Karosserie sorgt für hohe Windschlüpfigkeit und grosse Reichweite.\r\nLucid Motors ist als Autohersteller noch unbekannt. Wenn dieser Tage der Air Pure RWD auf den Markt… [+6014 chars]"
     },
     {
-      "source": { "id": "reuters", "name": "Reuters" },
-      "author": "Reuters",
-      "title": "US weekly jobless claims, equipment spending data point to slowing economy - Reuters",
-      "description": null,
-      "url": "https://www.reuters.com/markets/us/us-weekly-jobless-claims-drift-lower-2024-06-27/",
-      "urlToImage": null,
-      "publishedAt": "2024-06-27T16:44:00Z",
-      "content": null
+      "source": { "id": null, "name": "Biztoc.com" },
+      "author": "businessinsider.com",
+      "title": "Judge will consider $6 billion legal fees for lawyers who voided Elon Musk's multibillion pay package",
+      "description": "Tesla shareholders recently voted to ratify Elon Musk's multibillion-dollar pay package. But the fate of Musk's award still lies in the hands of a Delaware judge.\nApu Gomes via Getty Images\nLawyers who argued against Elon Musk's multibillion-dollar pay packag…",
+      "url": "https://biztoc.com/x/466fe7d529ba4e45",
+      "urlToImage": "https://biztoc.com/cdn/466fe7d529ba4e45_s.webp",
+      "publishedAt": "2024-06-28T03:15:32Z",
+      "content": "Tesla shareholders recently voted to ratify Elon Musk's multibillion-dollar pay package. But the fate of Musk's award still lies in the hands of a Delaware judge.Apu Gomes via Getty ImagesLawyers who… [+139 chars]"
     },
     {
-      "source": { "id": null, "name": "Yahoo Entertainment" },
-      "author": "Karen Friar",
-      "title": "Stock market today: Stocks waver after key data as Micron slides - Yahoo Finance",
-      "description": "A sell-off in Micron put a dent in the AI bullishness that has fueled the tech-driven rally, as investors eye fresh economic data.",
-      "url": "https://finance.yahoo.com/news/live/stock-market-today-stocks-waver-after-key-data-as-micron-slides-133048225.html",
-      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/GuD6ZuFSDNBbJYLOgcyjXw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD03OTk-/https://s.yimg.com/os/creatr-uploaded-images/2023-12/8956ce80-9a9b-11ee-bfeb-aecab89c5be0",
-      "publishedAt": "2024-06-27T16:30:35Z",
-      "content": "The number of continuing applications for unemployment benefits hit its highest level since November 2021 last week, furthering signs the labor market is cooling as unemployed workers struggle to fin… [+1805 chars]"
+      "source": { "id": null, "name": "Forbes" },
+      "author": "Timothy Papandreou, Contributor, \n Timothy Papandreou, Contributor\n https://www.forbes.com/sites/timothypapandreou/",
+      "title": "Is The Future Of Robotics Specialized Or Humanoid? It Depends",
+      "description": "The future of working and living will definitely include more robots than ever before. The question is will they be humanoid or specialized?",
+      "url": "https://www.forbes.com/sites/timothypapandreou/2024/06/27/is-the-future-of-robotics-specialized-or-humanoid-it-depends/",
+      "urlToImage": "https://imageio.forbes.com/specials-images/imageserve/667e22b4247b743be6d4bd36/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds",
+      "publishedAt": "2024-06-28T02:53:32Z",
+      "content": "The future of work will definitely include more robots that ever before. The question is will they ... [+] be humanoid or specialized?\r\ngetty\r\nFor decades, science fiction has presented a robotic fut… [+6385 chars]"
     },
     {
-      "source": { "id": null, "name": "CNBC" },
-      "author": "Sean Conlon",
-      "title": "Stocks making the biggest moves midday: Walgreens Boots Alliance, Levi Strauss, International Paper and more - CNBC",
-      "description": "These are the stocks posting the largest moves in midday trading.",
-      "url": "https://www.cnbc.com/2024/06/27/stocks-making-the-biggest-moves-midday-wba-levi-ip-and-more.html",
-      "urlToImage": "https://image.cnbcfm.com/api/v1/image/107389745-17108853292021-11-26t231204z_1342157552_rc2m2r90bp56_rtrmadp_0_walgreens-boots-results.jpeg?v=1719505114&w=1920&h=1080",
-      "publishedAt": "2024-06-27T16:09:51Z",
-      "content": null
-    },
-    {
-      "source": { "id": null, "name": "Fox Business" },
-      "author": "Breck Dumas",
-      "title": "Mortgage rates fall slightly to 6.86% - Fox Business",
-      "description": "Mortgage rates ticked down for the fourth straight week, but remained in the high-6% territory as the housing market continues to stall amid high rates and high home prices.",
-      "url": "https://www.foxbusiness.com/economy/mortgage-rates-june-27-2024",
-      "urlToImage": "https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2023/10/0/0/Real-estate-2.jpg?ve=1&tl=1",
-      "publishedAt": "2024-06-27T16:01:00Z",
-      "content": "Mortgage rates were mixed this week with the standard 30-year note declining slightly for the fourth consecutive reading, while shorter-term rates ticked up a bit.\r\nFreddie Mac's latest Primary Mortg… [+611 chars]"
-    },
-    {
-      "source": { "id": null, "name": "Fox Business" },
-      "author": "Megan Henney",
-      "title": "Wealthy Americans are anxious about making ends meet - Fox Business",
-      "description": "A new survey published by the Federal Reserve Bank of Philadelphia shows even Americans earning more than six figures are worried about making ends meet.",
-      "url": "https://www.foxbusiness.com/economy/wealthy-americans-anxious-about-making-ends-meet",
-      "urlToImage": "https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2022/09/0/0/inflation-27.jpg?ve=1&tl=1",
-      "publishedAt": "2024-06-27T15:43:00Z",
-      "content": "A growing number of Americans making six-figure salaries are worried about paying their monthly bills, according to a new survey published by the Federal Reserve Bank of Philadelphia.\r\nThe survey sho… [+3718 chars]"
-    },
-    {
-      "source": { "id": "the-verge", "name": "The Verge" },
-      "author": "Richard Lawler",
-      "title": "Verizon, AT&T, and T-Mobile customers roaming internationally can't connect - The Verge",
-      "description": "US mobile customers trying to use international roaming provided by T-Mobile, AT&T, and Verizon are experiencing a widespread outage.",
-      "url": "https://www.theverge.com/2024/6/27/24187281/verizon-att-t-mobile-international-roaming-calling-data-outage",
-      "urlToImage": "https://cdn.vox-cdn.com/thumbor/gzfZZpfp3TQCV2nCJIIdMn6OLrA=/0x0:2040x1360/1200x628/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/25373273/STK451_Internet_Service_Providers_C.jpg",
-      "publishedAt": "2024-06-27T15:34:46Z",
-      "content": "Verizon, AT&amp;T, and T-Mobile customers roaming internationally cant connect\r\nVerizon, AT&amp;T, and T-Mobile customers roaming internationally cant connect\r\n / Cell service for US customers abroad… [+1572 chars]"
-    },
-    {
-      "source": { "id": null, "name": "Fox Business" },
-      "author": "Aislinn Murphy",
-      "title": "Volkswagen recalls 271K Atlas SUVs over airbag issue - Fox Business",
-      "description": "Until affected Volkswagen Atlas sport utility vehicles have received the fix, people should avoid sitting in the front passenger seat \"whenever possible.\"",
-      "url": "https://www.foxbusiness.com/lifestyle/volkswagen-recalls-271k-atlas-suvs-over-airbag-issue",
-      "urlToImage": "https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2024/06/0/0/Volkswagen-Atlas-SUV-scaled.jpg?ve=1&tl=1",
-      "publishedAt": "2024-06-27T15:06:00Z",
-      "content": "Over a quarter of a million Volkswagen Atlas SUVs are being recalled in response to an issue that could lead to the front passenger airbag not working properly.\r\n\"The passenger occupant detection sys… [+2128 chars]"
-    },
-    {
-      "source": { "id": "cnn", "name": "CNN" },
-      "author": "Matt Egan",
-      "title": "The housing market is ‘stuck’ until at least 2026, Bank of America warns - CNN",
-      "description": "Help may not be on the way for first-time homebuyers frustrated by high mortgage rates and even higher home prices.",
-      "url": "https://www.cnn.com/2024/06/27/economy/housing-market-prices-inflation/index.html",
-      "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1878228771.jpg?c=16x9&q=w_800,c_fill",
-      "publishedAt": "2024-06-27T14:47:00Z",
-      "content": "Help may not be on the way for first-time homebuyers frustrated by high mortgage rates and even higher home prices.\r\nEconomists at Bank of America warned this week that the US housing market is stuck… [+4580 chars]"
-    },
-    {
-      "source": {
-        "id": "the-wall-street-journal",
-        "name": "The Wall Street Journal"
-      },
-      "author": "Greg Ip",
-      "title": "You Might Be Buying Your House at the Top of the Market - The Wall Street Journal",
-      "description": "Between high prices and mortgage rates, getting wealthy off your home is about to get a lot harder",
-      "url": "https://www.wsj.com/finance/investing/home-prices-overvalued-housing-market-4f8be55b",
-      "urlToImage": "https://images.wsj.net/im-973902/social",
-      "publishedAt": "2024-06-27T14:45:00Z",
-      "content": "Houses are really expensive, and getting more so. Prices jumped 1.2% in April from March, and are now up about 50% from the end of 2019, according to \r\none prominent index.For prospective buyers, its… [+261 chars]"
-    },
-    {
-      "source": {
-        "id": "the-wall-street-journal",
-        "name": "The Wall Street Journal"
-      },
-      "author": "Anna Wilde Mathews, Joseph Walker",
-      "title": "Walgreens Plans Major U.S. Store Closures - WSJ - The Wall Street Journal",
-      "description": "Pharmacy chain plans to shutter a significant share of its roughly 8,600 stores, cut its stake in primary-care provider VillageMD",
-      "url": "https://www.wsj.com/health/walgreens-plans-major-u-s-store-closures-0b04a96e",
-      "urlToImage": "https://images.wsj.net/im-973986/social",
-      "publishedAt": "2024-06-27T14:31:00Z",
-      "content": "Walgreens Boots Alliance Chief Executive Tim Wentworth is taking the struggling chain in a new direction, planning to close a substantial number of poorly performing stores and pulling back on the co… [+510 chars]"
-    },
-    {
-      "source": { "id": null, "name": "MarketWatch" },
-      "author": "MarketWatch",
-      "title": "Is an AI stock bubble looming? That’s the $167 billion question. - MarketWatch",
-      "description": null,
-      "url": "https://www.marketwatch.com/story/is-an-ai-stock-bubble-looming-thats-the-167-billion-question-53a76c00",
-      "urlToImage": null,
-      "publishedAt": "2024-06-27T14:31:00Z",
-      "content": null
-    },
-    {
-      "source": { "id": null, "name": "New York Post" },
-      "author": "Thomas Barrabi",
-      "title": "SpaceX reportedly prepping tender offer at record $210B valuation - New York Post ",
-      "description": "SpaceX will sell to employees and other insiders at $112 per share, Bloomberg reported, citing people familiar with the matter.",
-      "url": "https://nypost.com/2024/06/27/business/spacex-prepping-tender-offer-at-record-210b-valuation-report/",
-      "urlToImage": "https://nypost.com/wp-content/uploads/sites/2/2024/06/spacex-logo-elon-musk-photo-84527391.jpg?quality=75&strip=all&w=1024",
-      "publishedAt": "2024-06-27T14:31:00Z",
-      "content": "Billionaire Elon Musks SpaceX is set to launch a tender offer that would reportedly value the space exploration firm at a whopping $210 billion — a record for a privately held US company.\r\nSpaceX wil… [+2091 chars]"
-    },
-    {
-      "source": { "id": null, "name": "WDIV ClickOnDetroit" },
-      "author": "Derick Hutchinson",
-      "title": "67 ice cream products recalled due to possible listeria contamination - WDIV ClickOnDetroit",
-      "description": "A total of 67 different ice cream products have been recalled due to the possibility of a listeria contamination.",
-      "url": "https://www.clickondetroit.com/news/local/2024/06/27/67-ice-cream-products-recalled-due-to-possible-listeria-contamination/",
-      "urlToImage": "https://res.cloudinary.com/graham-media-group/image/upload/f_auto/q_auto/c_thumb,w_700/v1/media/gmg/PCDHZZ3LSVFYBDE2WV3CP4LB4E.jpg?_a=ATAPphC0",
-      "publishedAt": "2024-06-27T14:16:12Z",
-      "content": "A total of 67 different ice cream products have been recalled due to the possibility of a listeria contamination.\r\nTotally Cool, Inc. of Owings Mills, Maryland, issued a recall for multiple brands of… [+769 chars]"
-    },
-    {
-      "source": { "id": null, "name": "Ambcrypto.com" },
-      "author": "Benjamin Njiri",
-      "title": "Ethereum ETF revenue could cross '$15 billion by 2025' - Bitwise exec - AMBCrypto News",
-      "description": "ETH mutes on price charts despite a bullish outlook on the flows front and likely ETF launch next week.",
-      "url": "https://ambcrypto.com/ethereum-etf-revenue-could-cross-15-billion-by-2025-bitwise-exec/",
-      "urlToImage": "https://ambcrypto.com/wp-content/uploads/2024/06/Ethereum-ETFs-15B-1-1000x600.jpeg",
-      "publishedAt": "2024-06-27T14:05:32Z",
-      "content": "<ul><li>US spot ETH ETFs could hit $15 billion in net flows in the next 18 months </li><li>Despite the high chances of the ETF launch next week, more traders have shorted ETH. </li></ul>Despite some … [+2773 chars]"
-    },
-    {
-      "source": { "id": "axios", "name": "Axios" },
-      "author": "Axios",
-      "title": "Exclusive: Time strikes licensing deal with OpenAI - Axios",
-      "description": null,
-      "url": "https://www.axios.com/2024/06/27/openai-time-licensing-deal-chatgpt",
-      "urlToImage": null,
-      "publishedAt": "2024-06-27T13:36:50Z",
-      "content": null
-    },
-    {
-      "source": { "id": "the-hill", "name": "The Hill" },
-      "author": "Taylor Giorno",
-      "title": "NTSB sanctions Boeing for releasing details of 737 Max investigation - The Hill",
-      "description": "The National Transportation Safety Board (NTSB) sanctioned Boeing on Thursday for disclosing nonpublic details on an investigation into a 737 Max 9 door plug that blew off during an Alaska Airlines flight in January. An unnamed Boeing executive discussed cert…",
-      "url": "https://thehill.com/business/4742864-ntsb-sanctions-boeing-737-max-door-plug/",
-      "urlToImage": "https://thehill.com/wp-content/uploads/sites/2/2024/01/GettyImages-1910140688-e1704735421514.jpg?w=1280",
-      "publishedAt": "2024-06-27T13:13:00Z",
-      "content": "Skip to content\r\nThe National Transportation Safety Board (NTSB) sanctioned Boeing on Thursday for disclosing nonpublic details on an investigation into a 737 Max 9 door plug that blew off during an … [+2727 chars]"
-    },
-    {
-      "source": { "id": null, "name": "Yahoo Entertainment" },
-      "author": "Jeran Wittenstein and Ryan Vlastelica",
-      "title": "Nvidia's wild stock swings put AI rally stamina in spotlight - Yahoo Finance",
-      "description": "(Bloomberg) -- Big swings in Nvidia Corp. shares have reignited debate about the staying power of the chipmaker’s rally. While the stock’s valuation and...",
-      "url": "https://finance.yahoo.com/news/nvidia-wild-stock-swings-put-120229731.html",
-      "urlToImage": "https://media.zenfs.com/en/bloomberg_markets_842/fef6334b0ff06fa8f961385cf5102809",
-      "publishedAt": "2024-06-27T12:58:53Z",
-      "content": "(Bloomberg) -- Big swings in Nvidia Corp. shares have reignited debate about the staying power of the chipmakers rally. While the stocks valuation and threat of competition are major concerns, one va… [+5424 chars]"
-    },
-    {
-      "source": { "id": null, "name": "Bea.gov" },
-      "author": null,
-      "title": "Gross Domestic Product (Third Estimate), Corporate Profits (Revised Estimate), and GDP by Industry, First Quarter 2024 | U.S - Bureau of Economic Analysis",
-      "description": "Real gross domestic product (GDP) increased at an annual rate of 1.4 percent in the first quarter of 2024 (table 1), according to the \"third\" estimate released by the Bureau of Economic Analysis. In the fourth quarter of 2023, real GDP increased 3.4 percent.",
-      "url": "https://www.bea.gov/news/2024/gross-domestic-product-third-estimate-corporate-profits-revised-estimate-and-gdp-industry",
-      "urlToImage": null,
-      "publishedAt": "2024-06-27T12:30:00Z",
-      "content": "Resources\r\nAdditional resources available at www.bea.gov:\r\nDefinitions\r\nGross domestic product (GDP), or value added, is the value of the goods and services produced by the nation's economy less the … [+7122 chars]"
-    },
-    {
-      "source": { "id": null, "name": "Electrek" },
-      "author": "Scooter Doll",
-      "title": "Hyundai unveils the INSTER sub-compact EV for Europe, starting at an MSRP below 25000 euros - Electrek",
-      "description": "One week after teasing a European version of its Casper A-segment sub-compact EV called the INSTER, Hyundai Motor Group has...",
-      "url": "http://electrek.co/2024/06/27/hyundai-unveils-inster-sub-compact-ev-europe-starting-msrp-below-25000-euros/",
-      "urlToImage": "https://i0.wp.com/electrek.co/wp-content/uploads/sites/3/2024/06/Hyundai-EV-Europe-INSTER-hero.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
-      "publishedAt": "2024-06-27T12:26:00Z",
-      "content": "One week after teasing a European version of its Casper A-segment sub-compact EV called the INSTER, Hyundai Motor Group has officially unveiled the new mini-car, which holds a lot of potential with c… [+3600 chars]"
+      "source": { "id": null, "name": "Investor's Business Daily" },
+      "author": "Investor's Business Daily",
+      "title": "Dow Jones Futures Erase Losses, Techs Rise After Biden-Trump Debate; Fed Inflation Gauge Due",
+      "description": "Meta Platforms broke out Thursday, but software stood out.",
+      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-biden-trump-debate-fed-inflation-gauge/",
+      "urlToImage": "https://www.investors.com/wp-content/uploads/2024/06/SMTlateDebate062724AP.jpg",
+      "publishedAt": "2024-06-28T02:45:11Z",
+      "content": "Dow Jones futures improved to unchanged overnight, while S&amp;P 500 futures and Nasdaq futures rose. President Joe Biden and former President Donald Trump faced off in their first 2024 debate Thursd… [+7579 chars]"
     }
   ]
 }

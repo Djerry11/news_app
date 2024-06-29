@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:news_app/src/features/home/presentation/news_tile.dart';
+import 'package:news_app/src/features/home/presentation/widgets/news_tile.dart';
 
 import 'package:news_app/src/providers/provider.dart';
 
