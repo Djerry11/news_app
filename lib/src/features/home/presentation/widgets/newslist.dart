@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/news_list_tile.dart';
 import 'package:news_app/src/core/network/news_repository.dart';
@@ -9,11 +10,12 @@ import 'package:news_app/src/routes/app_routes.dart';
 // import 'news_tile.dart';s
 
 class NewsList extends ConsumerWidget {
-  const NewsList({super.key});
+  const NewsList({super.key, required this.category});
+  final String? category;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final articlesAsync = ref.watch(fetchNewsProvider());
+    final articlesAsync = ref.watch(fetchNewsProvider(category: category));
     // final articlesAsyncValue = ref.watch(fetchNewsProvider(
     //   queryData: (
     //     category: 'Sports',

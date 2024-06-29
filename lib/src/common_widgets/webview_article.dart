@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/favorite_button.dart';
 import 'package:news_app/src/core/models/articles.dart';
-import 'package:news_app/src/providers/provider.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -55,14 +55,24 @@ class _WebViewArticleState extends State<WebViewArticle> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Open in Browser'),
-          content: const Text('Do you want to open the URL in the browser?'),
+          title: const Text('Open in Browser',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              )),
+          content: const Text('Do you want to open this in the browser?',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              )),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('Cancel'),
+              child: const Text('Cancel', style: TextStyle(color: Colors.red)),
             ),
             TextButton(
               onPressed: () async {
@@ -74,7 +84,7 @@ class _WebViewArticleState extends State<WebViewArticle> {
                   throw 'Could not launch $webUri';
                 }
               },
-              child: const Text('Open'),
+              child: const Text('Open', style: TextStyle(color: Colors.green)),
             ),
           ],
         );

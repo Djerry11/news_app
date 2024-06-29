@@ -8,48 +8,64 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'trending_news_item.dart';
 
 class TrendingNews extends ConsumerWidget {
-  const TrendingNews({super.key});
-
+  const TrendingNews({super.key, required this.category});
+  final String? category;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const trendingItems = 4;
-    return const Column(
+    const trendingItems = 5;
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        TrendingNewsHeader(),
-        SizedBox(height: 10),
-        TrendingNewsCarousel(trendingItems: trendingItems),
-        SizedBox(height: 10),
-        TrendingNewsIndicator(trendingItems: trendingItems),
+        TrendingNewsHeader(category: category),
+        TrendingNewsCarousel(trendingItems: trendingItems, category: category),
+        const SizedBox(height: 10),
+        const TrendingNewsIndicator(trendingItems: trendingItems),
       ],
     );
   }
 }
 
 class TrendingNewsHeader extends StatelessWidget {
-  const TrendingNewsHeader({super.key});
+  const TrendingNewsHeader({super.key, required this.category});
+  final String? category;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Breaking news!',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          TextButton(
-            onPressed: () {
-              // Add navigation to a detailed news list page
-            },
-            child: const Text(
-              'See all',
-              style: TextStyle(
-                color: Colors.grey,
-                fontWeight: FontWeight.w600,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Breaking news!',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
+              TextButton(
+                onPressed: () {
+                  //TODO: Implement the see all button
+                },
+                child: const Text(
+                  'See all',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+            decoration: BoxDecoration(
+              color: Colors.orange.shade400,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Text(
+              category!.toUpperCase(),
+              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
             ),
           ),
         ],
@@ -61,23 +77,24 @@ class TrendingNewsHeader extends StatelessWidget {
 class TrendingNewsCarousel extends ConsumerWidget {
   const TrendingNewsCarousel({
     required this.trendingItems,
+    this.category,
     super.key,
   });
 
   final int trendingItems;
+  final String? category;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final maxWidth = MediaQuery.of(context).size.width;
-    return ref
-        .watch(
+    final trendingNewsAsync = ref.watch(
       fetchNewsProvider(
-        category: 'general',
+        category: category ?? 'general',
         page: 1,
         pageSize: 7,
       ),
-    )
-        .when(
+    );
+    return trendingNewsAsync.when(
       data: (data) {
         return CarouselSlider.builder(
           key: const PageStorageKey('carousel_slider'),
@@ -143,12 +160,12 @@ class TrendingNewsIndicator extends ConsumerWidget {
     return AnimatedSmoothIndicator(
       activeIndex: ref.watch(trendingIndexProvider),
       count: trendingItems,
-      effect: WormEffect(
+      effect: const WormEffect(
         dotHeight: 10,
         dotWidth: 10,
         spacing: 10,
-        dotColor: const Color.fromARGB(255, 243, 242, 242),
-        activeDotColor: Colors.grey.shade900,
+        dotColor: Color.fromARGB(255, 199, 184, 184),
+        activeDotColor: Colors.orange,
         paintStyle: PaintingStyle.fill,
       ),
     );
