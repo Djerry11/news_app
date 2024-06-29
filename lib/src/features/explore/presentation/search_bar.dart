@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:news_app/src/features/discover/presentation/news_query_notifier.dart';
+import 'package:news_app/src/features/explore/data/news_query_notifier.dart';
 
 class NewsSearchBar extends ConsumerStatefulWidget {
   const NewsSearchBar({super.key});
@@ -39,7 +39,7 @@ class _SearchBarState extends ConsumerState<NewsSearchBar> {
                   child: Center(
                     child: TextField(
                       controller: _controller,
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.black),
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.zero,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:news_app/src/common/news_list_tile/news_list_tile.dart';
+import 'package:news_app/src/common_widgets/news_list_tile/news_list_tile.dart';
 import 'package:news_app/src/core/network/news_repository.dart';
 
 import 'package:news_app/src/routes/app_routes.dart';

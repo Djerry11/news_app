@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
-import 'package:news_app/src/common/news_list_tile/favorite_button.dart';
+import 'package:news_app/src/common_widgets/news_list_tile/favorite_button.dart';
 import 'package:news_app/src/core/models/articles.dart';
 import 'package:news_app/src/routes/app_routes.dart';
 import 'package:shimmer/shimmer.dart';

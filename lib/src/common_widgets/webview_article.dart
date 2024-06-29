@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news_app/src/common_widgets/news_list_tile/favorite_button.dart';
 import 'package:news_app/src/core/models/articles.dart';
 import 'package:news_app/src/providers/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -65,13 +66,13 @@ class _WebViewArticleState extends State<WebViewArticle> {
             ),
             TextButton(
               onPressed: () async {
+                // ignore: use_build_context_synchronously
+                context.pop();
                 if (await canLaunchUrl(webUri)) {
                   await launchUrl(webUri);
                 } else {
                   throw 'Could not launch $webUri';
                 }
-                // ignore: use_build_context_synchronously
-                context.pop();
               },
               child: const Text('Open'),
             ),
@@ -101,24 +102,7 @@ class _WebViewArticleState extends State<WebViewArticle> {
               ),
         ),
         actions: [
-          Consumer(builder: (context, ref, child) {
-            final bookmarkNotifier = ref.read(bookmarkProvider.notifier);
-            final isBookmarked = ref
-                .watch(bookmarkProvider)
-                .any((a) => a.url == widget.article.url);
-
-            return IconButton(
-              icon: isBookmarked
-                  ? const Icon(Icons.favorite)
-                  : const Icon(Icons.favorite_outline),
-              color: isBookmarked ? Colors.red : Colors.green,
-              onPressed: () {
-                isBookmarked
-                    ? bookmarkNotifier.removeBookmark(widget.article)
-                    : bookmarkNotifier.addBookmark(widget.article);
-              },
-            );
-          }),
+          FavoriteButton(article: widget.article),
           const SizedBox(
             width: 3,
           ),

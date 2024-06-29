@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/core/models/articles.dart';
-import 'package:news_app/src/providers/provider.dart';
+import 'package:news_app/src/features/favorites/data/favorite_controller.dart';
 
 class FavoriteButton extends ConsumerWidget {
   final Articles article;
@@ -9,19 +9,23 @@ class FavoriteButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final bookmarkNotifier = ref.read(bookmarkProvider.notifier);
-    final isBookmarked =
-        ref.watch(bookmarkProvider).any((a) => a.url == article.url);
+    final bookmarkNotifier = ref.read(favoriteNotifierProvider.notifier);
+
+    final isFavorite = ref
+            .watch(favoriteNotifierProvider)
+            .value
+            ?.any((a) => a.url == article.url) ??
+        false;
 
     return IconButton(
       onPressed: () {
-        isBookmarked
-            ? bookmarkNotifier.removeBookmark(article)
-            : bookmarkNotifier.addBookmark(article);
+        isFavorite
+            ? bookmarkNotifier.removeFavorites(article)
+            : bookmarkNotifier.addFavorites(article);
       },
       icon: Icon(
-        isBookmarked ? Icons.favorite : Icons.favorite_border_outlined,
-        color: isBookmarked ? Colors.red : Colors.deepPurpleAccent,
+        isFavorite ? Icons.favorite : Icons.favorite_border_outlined,
+        color: isFavorite ? Colors.red : Colors.deepPurpleAccent,
         size: 30,
       ),
     );

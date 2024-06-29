@@ -331,7 +331,7 @@ Future<List<Articles>> fetchNews(
     return newsRepo.searchNews(
       page: page,
       query: query,
-      sortBy: sortBy ?? 'publishedAt',
+      sortBy: sortBy ?? 'relevance',
       cancelToken: cancelToken,
     );
   } else {

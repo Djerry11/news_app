@@ -19,7 +19,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
         selectedIndex: navigationShell.currentIndex,
         height: 60,
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
           NavigationDestination(
               icon: Icon(
                 Icons.g_translate_outlined,
@@ -28,7 +28,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
               label: 'Explore'),
           NavigationDestination(
               icon: Icon(
-                Icons.favorite,
+                Icons.favorite_outline,
                 color: Colors.purple,
               ),
               label: 'Favorites'),

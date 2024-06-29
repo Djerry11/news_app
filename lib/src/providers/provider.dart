@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/core/models/articles.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 //Provider to watch change and get change
 final trendingIndexProvider = StateNotifierProvider<TrendingIndex, int>((ref) {
@@ -31,13 +32,5 @@ class BookmarkNotifier extends StateNotifier<List<Articles>> {
 
   void removeBookmark(Articles article) {
     state = state.where((a) => a.url != article.url).toList();
-  }
-
-  bool isBookmarked(Articles article) {
-    return state.any((a) => a.url == article.url);
-  }
-
-  void printBookmark() {
-    print(state.length);
   }
 }

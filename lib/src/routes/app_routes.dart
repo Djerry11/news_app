@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/core/models/articles.dart';
-import 'package:news_app/src/features/discover/presentation/news_search_screen.dart';
+import 'package:news_app/src/features/explore/presentation/news_search_screen.dart';
 import 'package:news_app/src/features/favorites/presentation/favorite_page.dart';
 import 'package:news_app/src/features/onboarding/presentation/onboarding_page.dart';
-import 'package:news_app/src/features/web_articles/presentation/webview_article.dart';
+import 'package:news_app/src/common_widgets/webview_article.dart';
 import 'package:news_app/src/routes/scaff_nav_bar.dart';
 import '../features/home/presentation/home_page.dart';
 

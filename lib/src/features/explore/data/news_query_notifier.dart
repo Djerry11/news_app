@@ -11,7 +11,7 @@ class NewsQueryNotifier extends _$NewsQueryNotifier {
 
   @override
   String build() {
-    // don't forget to close the StreamController and cancel the subscriptions on dispose
+    // cancel the subscriptions on dispose
     ref.onDispose(() {
       _debounceTimer?.cancel();
     });

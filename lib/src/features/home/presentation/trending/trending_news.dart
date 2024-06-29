@@ -82,7 +82,7 @@ class TrendingNewsCarousel extends ConsumerWidget {
         return CarouselSlider.builder(
           key: const PageStorageKey('carousel_slider'),
           options: CarouselOptions(
-            autoPlay: false,
+            autoPlay: true,
             height: 250,
             viewportFraction: 0.9,
             autoPlayCurve: Curves.fastOutSlowIn,

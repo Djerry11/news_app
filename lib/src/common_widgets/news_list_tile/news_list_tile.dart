@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/src/common/news_list_tile/favorite_button.dart';
-import 'package:news_app/src/common/news_list_tile/news_info_text.dart';
-import 'package:news_app/src/common/news_list_tile/news_list_image.dart';
+import 'package:news_app/src/common_widgets/news_list_tile/favorite_button.dart';
+import 'package:news_app/src/common_widgets/news_list_tile/news_info_text.dart';
+import 'package:news_app/src/common_widgets/news_list_tile/news_list_image.dart';
 
 import 'package:news_app/src/core/models/articles.dart';
 

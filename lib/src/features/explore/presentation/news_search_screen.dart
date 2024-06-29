@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:news_app/src/common/news_list_tile/news_list_tile.dart';
+import 'package:news_app/src/common_widgets/news_list_tile/news_list_tile.dart';
 import 'package:news_app/src/core/network/news_repository.dart';
-import 'package:news_app/src/features/discover/presentation/search_bar.dart';
-import 'package:news_app/src/features/discover/data/news_query_notifier.dart';
+import 'package:news_app/src/features/explore/presentation/search_bar.dart';
+import 'package:news_app/src/features/explore/data/news_query_notifier.dart';
 import 'package:news_app/src/routes/app_routes.dart';
 
 class NewsSearchScreen extends ConsumerStatefulWidget {
@@ -74,26 +74,32 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
               },
               child: responseAsync.when(
                 loading: () => const Center(child: CircularProgressIndicator()),
-                error: (err, stack) => Center(child: Text(err.toString())),
+                error: (err, stack) => const Center(
+                    child: Text(
+                        'Oops!,No matching articles found!\nPlease try another query!')),
                 data: (articles) {
-                  return ListView.builder(
-                    controller: _scrollController,
-                    itemCount: articles.length,
-                    itemBuilder: (context, index) {
-                      final article = articles[index];
-                      return NewsListTile(
-                        article: article,
-                        debugIndex: index + 1,
-                        onPressed: () => context.pushNamed(
-                          AppRoute.webViewArticle.name,
-                          pathParameters: {
-                            'id': article.source!.name.toString()
+                  return (articles.isEmpty)
+                      ? const Center(
+                          child: Text(
+                              'Oops!,No matching articles found! Error404'))
+                      : ListView.builder(
+                          controller: _scrollController,
+                          itemCount: articles.length,
+                          itemBuilder: (context, index) {
+                            final article = articles[index];
+                            return NewsListTile(
+                              article: article,
+                              debugIndex: index + 1,
+                              onPressed: () => context.pushNamed(
+                                AppRoute.webViewArticle.name,
+                                pathParameters: {
+                                  'id': article.source!.name.toString()
+                                },
+                                extra: article,
+                              ),
+                            );
                           },
-                          extra: article,
-                        ),
-                      );
-                    },
-                  );
+                        );
                 },
               ),
             ),
