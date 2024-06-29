@@ -8,9 +8,16 @@ import 'package:news_app/src/features/discover/presentation/news_discover_screen
 import 'package:news_app/src/features/onboarding/presentation/onboarding_page.dart';
 import 'package:news_app/src/features/web_articles/presentation/webview_article.dart';
 import 'package:news_app/src/routes/scaff_nav_bar.dart';
-import 'package:news_app/src/routes/test.dart';
 import '../features/home/presentation/home_page.dart';
 import '../features/favorites/presentation/bookmark_page.dart';
+
+enum AppRoute {
+  home,
+  discover,
+  favorites,
+  profile,
+  webViewArticle,
+}
 
 class AppRoutes {
   AppRoutes._();
@@ -26,7 +33,7 @@ class AppRoutes {
       GlobalKey<NavigatorState>(debugLabel: 'profileKey');
 
   static final router = GoRouter(
-    initialLocation: '/discover',
+    initialLocation: '/home',
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       GoRoute(
@@ -49,7 +56,7 @@ class AppRoutes {
             routes: [
               GoRoute(
                 path: '/home',
-                name: 'home',
+                name: AppRoute.home.name,
                 builder: (context, state) => const HomePage(),
               ),
             ],
@@ -60,8 +67,8 @@ class AppRoutes {
             routes: [
               GoRoute(
                 path: '/discover',
-                name: 'discover',
-                builder: (context, state) => const DiscoverPage(),
+                name: AppRoute.discover.name,
+                builder: (context, state) => const NewsSearchScreen(),
               ),
             ],
           ),
@@ -71,7 +78,7 @@ class AppRoutes {
             routes: [
               GoRoute(
                 path: '/favorites',
-                name: 'favorites',
+                name: AppRoute.favorites.name,
                 builder: (context, state) => const BookmarkPage(),
               ),
             ],
@@ -82,7 +89,7 @@ class AppRoutes {
             routes: [
               GoRoute(
                 path: '/profile',
-                name: 'profile',
+                name: AppRoute.profile.name,
                 builder: (context, state) => const NewsSearchScreen(),
               ),
             ],
@@ -92,19 +99,18 @@ class AppRoutes {
 
       // Article details
       GoRoute(
-        path: '/webViewArticle',
-        name: 'webViewArticle',
+        path: '/webViewArticle/:id',
+        name: AppRoute.webViewArticle.name,
         builder: (context, state) {
-          final articleJson = state.uri.queryParameters['article'];
-          if (articleJson == null) {
+          final article = state.extra as Articles?;
+          if (article == null) {
             return const Scaffold(
               body: Center(
                 child: Text('Article data not found'),
               ),
             );
           }
-          final jsonArticle = jsonDecode(articleJson);
-          return WebViewArticle(article: Articles.fromJson(jsonArticle));
+          return WebViewArticle(article: article);
         },
       ),
     ],

@@ -5,7 +5,7 @@ import 'package:news_app/src/core/models/news_api_response.dart';
 import 'package:news_app/src/core/network/news_repository.dart';
 import 'package:news_app/src/core/utils/constants.dart';
 import 'package:news_app/src/features/home/presentation/widgets/news_tile.dart';
-import 'package:news_app/src/routes/news_tile_shimmer.dart';
+import 'package:news_app/src/common/news_list_tile/news_tile_shimmer.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({super.key});

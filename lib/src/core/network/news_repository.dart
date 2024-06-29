@@ -32,13 +32,15 @@ class NewsRepository {
         'language': 'en',
       },
     );
-    // print('uri: ${uri.toString()}');
+
     final response = await client.getUri(uri, cancelToken: cancelToken);
+    print("topHeadlinesResponse: $response");
     return NewsApiResponse.fromJson(response.data);
   }
 
   Future<NewsApiResponse> searchNews(
       {required NewsQueryData queryData, CancelToken? cancelToken}) async {
+    final dio = Dio();
     final uri = Uri(
       scheme: 'https',
       host: 'newsapi.org',
@@ -50,7 +52,8 @@ class NewsRepository {
         'sortBy': queryData.sortBy ?? 'publishedAt',
       },
     );
-    final response = await client.getUri(uri, cancelToken: cancelToken);
+    final response = await dio.getUri(uri, cancelToken: cancelToken);
+    print("searchResponse: $response");
     return NewsApiResponse.fromJson(response.data);
   }
 
@@ -67,22 +70,18 @@ class NewsRepository {
       },
     );
     final response = await client.getUri(uri, cancelToken: cancelToken);
+    print("searchCatResponse: $response");
     return NewsApiResponse.fromJson(response.data);
   }
 }
 
 @riverpod
-NewsRepository newsRepository(NewsRepositoryRef ref) =>
-    NewsRepository(client: ref.watch(dioProvider), apiKey: API_KEY);
+NewsRepository newsRepository(NewsRepositoryRef ref) => NewsRepository(
+      client: ref.watch(dioProvider),
+      apiKey: API_KEY,
+    );
 
 // class AbortedException implements Exception {}
-
-// @riverpod
-// Future<NewsApiResponse> fetchNews(FetchNewsRef ref, int page,
-//     {required NewsQueryData queryData}) async {
-//   final newsRepo = ref.watch(newsRepositoryProvider);
-//   return newsRepo.fetchTopHeadlines(page: page);
-// }
 
 /// Provider to fetch paginated news data
 @riverpod

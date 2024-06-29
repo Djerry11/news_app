@@ -6,7 +6,7 @@ import 'package:news_app/src/features/discover/presentation/search_bar.dart';
 import 'package:news_app/src/features/discover/presentation/news_query_notifier.dart';
 
 import 'package:news_app/src/features/home/presentation/widgets/news_tile.dart';
-import 'package:news_app/src/routes/news_tile_shimmer.dart';
+import 'package:news_app/src/common/news_list_tile/news_tile_shimmer.dart';
 
 class NewsSearchScreen extends ConsumerWidget {
   const NewsSearchScreen({super.key});
