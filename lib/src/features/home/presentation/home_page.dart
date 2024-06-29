@@ -11,11 +11,17 @@ class HomePage extends ConsumerWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('News World'),
+          title: const Text(
+            'News World',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
         body: const SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Trending News
               TrendingNews(),

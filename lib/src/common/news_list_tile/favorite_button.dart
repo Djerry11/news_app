@@ -21,7 +21,7 @@ class FavoriteButton extends ConsumerWidget {
       },
       icon: Icon(
         isBookmarked ? Icons.favorite : Icons.favorite_border_outlined,
-        color: isBookmarked ? Colors.red : Colors.green,
+        color: isBookmarked ? Colors.red : Colors.deepPurpleAccent,
         size: 30,
       ),
     );

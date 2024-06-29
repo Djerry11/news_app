@@ -21,7 +21,7 @@ final newsRepositoryProvider = AutoDisposeProvider<NewsRepository>.internal(
 );
 
 typedef NewsRepositoryRef = AutoDisposeProviderRef<NewsRepository>;
-String _$fetchNewsHash() => r'29098047fe4c7922f2c1f81b632bbed1561af5eb';
+String _$fetchNewsHash() => r'c9e88e7c96a00288d4ab1b42ed9e33a59868b98a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -44,34 +44,39 @@ class _SystemHash {
   }
 }
 
-/// Provider to fetch paginated news data
+/// Provider to fetch news articles, either top headlines or search results, with pagination.
 ///
 /// Copied from [fetchNews].
 @ProviderFor(fetchNews)
 const fetchNewsProvider = FetchNewsFamily();
 
-/// Provider to fetch paginated news data
+/// Provider to fetch news articles, either top headlines or search results, with pagination.
 ///
 /// Copied from [fetchNews].
-class FetchNewsFamily extends Family<AsyncValue<NewsApiResponse>> {
-  /// Provider to fetch paginated news data
+class FetchNewsFamily extends Family<AsyncValue<List<Articles>>> {
+  /// Provider to fetch news articles, either top headlines or search results, with pagination.
   ///
   /// Copied from [fetchNews].
   const FetchNewsFamily();
 
-  /// Provider to fetch paginated news data
+  /// Provider to fetch news articles, either top headlines or search results, with pagination.
   ///
   /// Copied from [fetchNews].
   FetchNewsProvider call({
-    required ({
-      String? category,
-      int page,
-      String query,
-      String? sortBy
-    }) queryData,
+    int page = 1,
+    String query = '',
+    String? sortBy,
+    String country = 'us',
+    String? category,
+    int pageSize = 20,
   }) {
     return FetchNewsProvider(
-      queryData: queryData,
+      page: page,
+      query: query,
+      sortBy: sortBy,
+      country: country,
+      category: category,
+      pageSize: pageSize,
     );
   }
 
@@ -80,7 +85,12 @@ class FetchNewsFamily extends Family<AsyncValue<NewsApiResponse>> {
     covariant FetchNewsProvider provider,
   ) {
     return call(
-      queryData: provider.queryData,
+      page: provider.page,
+      query: provider.query,
+      sortBy: provider.sortBy,
+      country: provider.country,
+      category: provider.category,
+      pageSize: provider.pageSize,
     );
   }
 
@@ -99,24 +109,29 @@ class FetchNewsFamily extends Family<AsyncValue<NewsApiResponse>> {
   String? get name => r'fetchNewsProvider';
 }
 
-/// Provider to fetch paginated news data
+/// Provider to fetch news articles, either top headlines or search results, with pagination.
 ///
 /// Copied from [fetchNews].
-class FetchNewsProvider extends AutoDisposeFutureProvider<NewsApiResponse> {
-  /// Provider to fetch paginated news data
+class FetchNewsProvider extends AutoDisposeFutureProvider<List<Articles>> {
+  /// Provider to fetch news articles, either top headlines or search results, with pagination.
   ///
   /// Copied from [fetchNews].
   FetchNewsProvider({
-    required ({
-      String? category,
-      int page,
-      String query,
-      String? sortBy
-    }) queryData,
+    int page = 1,
+    String query = '',
+    String? sortBy,
+    String country = 'us',
+    String? category,
+    int pageSize = 20,
   }) : this._internal(
           (ref) => fetchNews(
             ref as FetchNewsRef,
-            queryData: queryData,
+            page: page,
+            query: query,
+            sortBy: sortBy,
+            country: country,
+            category: category,
+            pageSize: pageSize,
           ),
           from: fetchNewsProvider,
           name: r'fetchNewsProvider',
@@ -126,7 +141,12 @@ class FetchNewsProvider extends AutoDisposeFutureProvider<NewsApiResponse> {
                   : _$fetchNewsHash,
           dependencies: FetchNewsFamily._dependencies,
           allTransitiveDependencies: FetchNewsFamily._allTransitiveDependencies,
-          queryData: queryData,
+          page: page,
+          query: query,
+          sortBy: sortBy,
+          country: country,
+          category: category,
+          pageSize: pageSize,
         );
 
   FetchNewsProvider._internal(
@@ -136,14 +156,24 @@ class FetchNewsProvider extends AutoDisposeFutureProvider<NewsApiResponse> {
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.queryData,
+    required this.page,
+    required this.query,
+    required this.sortBy,
+    required this.country,
+    required this.category,
+    required this.pageSize,
   }) : super.internal();
 
-  final ({String? category, int page, String query, String? sortBy}) queryData;
+  final int page;
+  final String query;
+  final String? sortBy;
+  final String country;
+  final String? category;
+  final int pageSize;
 
   @override
   Override overrideWith(
-    FutureOr<NewsApiResponse> Function(FetchNewsRef provider) create,
+    FutureOr<List<Articles>> Function(FetchNewsRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -154,43 +184,82 @@ class FetchNewsProvider extends AutoDisposeFutureProvider<NewsApiResponse> {
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        queryData: queryData,
+        page: page,
+        query: query,
+        sortBy: sortBy,
+        country: country,
+        category: category,
+        pageSize: pageSize,
       ),
     );
   }
 
   @override
-  AutoDisposeFutureProviderElement<NewsApiResponse> createElement() {
+  AutoDisposeFutureProviderElement<List<Articles>> createElement() {
     return _FetchNewsProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is FetchNewsProvider && other.queryData == queryData;
+    return other is FetchNewsProvider &&
+        other.page == page &&
+        other.query == query &&
+        other.sortBy == sortBy &&
+        other.country == country &&
+        other.category == category &&
+        other.pageSize == pageSize;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, queryData.hashCode);
+    hash = _SystemHash.combine(hash, page.hashCode);
+    hash = _SystemHash.combine(hash, query.hashCode);
+    hash = _SystemHash.combine(hash, sortBy.hashCode);
+    hash = _SystemHash.combine(hash, country.hashCode);
+    hash = _SystemHash.combine(hash, category.hashCode);
+    hash = _SystemHash.combine(hash, pageSize.hashCode);
 
     return _SystemHash.finish(hash);
   }
 }
 
-mixin FetchNewsRef on AutoDisposeFutureProviderRef<NewsApiResponse> {
-  /// The parameter `queryData` of this provider.
-  ({String? category, int page, String query, String? sortBy}) get queryData;
+mixin FetchNewsRef on AutoDisposeFutureProviderRef<List<Articles>> {
+  /// The parameter `page` of this provider.
+  int get page;
+
+  /// The parameter `query` of this provider.
+  String get query;
+
+  /// The parameter `sortBy` of this provider.
+  String? get sortBy;
+
+  /// The parameter `country` of this provider.
+  String get country;
+
+  /// The parameter `category` of this provider.
+  String? get category;
+
+  /// The parameter `pageSize` of this provider.
+  int get pageSize;
 }
 
 class _FetchNewsProviderElement
-    extends AutoDisposeFutureProviderElement<NewsApiResponse>
-    with FetchNewsRef {
+    extends AutoDisposeFutureProviderElement<List<Articles>> with FetchNewsRef {
   _FetchNewsProviderElement(super.provider);
 
   @override
-  ({String? category, int page, String query, String? sortBy}) get queryData =>
-      (origin as FetchNewsProvider).queryData;
+  int get page => (origin as FetchNewsProvider).page;
+  @override
+  String get query => (origin as FetchNewsProvider).query;
+  @override
+  String? get sortBy => (origin as FetchNewsProvider).sortBy;
+  @override
+  String get country => (origin as FetchNewsProvider).country;
+  @override
+  String? get category => (origin as FetchNewsProvider).category;
+  @override
+  int get pageSize => (origin as FetchNewsProvider).pageSize;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

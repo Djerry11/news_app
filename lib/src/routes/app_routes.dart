@@ -1,15 +1,12 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/core/models/articles.dart';
-import 'package:news_app/src/features/discover/presentation/discover_page.dart';
-import 'package:news_app/src/features/discover/presentation/news_discover_screen.dart';
+import 'package:news_app/src/features/discover/presentation/news_search_screen.dart';
+import 'package:news_app/src/features/favorites/presentation/favorite_page.dart';
 import 'package:news_app/src/features/onboarding/presentation/onboarding_page.dart';
 import 'package:news_app/src/features/web_articles/presentation/webview_article.dart';
 import 'package:news_app/src/routes/scaff_nav_bar.dart';
 import '../features/home/presentation/home_page.dart';
-import '../features/favorites/presentation/bookmark_page.dart';
 
 enum AppRoute {
   home,
@@ -29,8 +26,8 @@ class AppRoutes {
       GlobalKey<NavigatorState>(debugLabel: 'homeKey');
   static final _catNavigatorKey =
       GlobalKey<NavigatorState>(debugLabel: 'catKey');
-  static final _profileNavigatorKey =
-      GlobalKey<NavigatorState>(debugLabel: 'profileKey');
+  // static final _profileNavigatorKey =
+  //     GlobalKey<NavigatorState>(debugLabel: 'profileKey');
 
   static final router = GoRouter(
     initialLocation: '/home',
@@ -79,21 +76,21 @@ class AppRoutes {
               GoRoute(
                 path: '/favorites',
                 name: AppRoute.favorites.name,
-                builder: (context, state) => const BookmarkPage(),
+                builder: (context, state) => const FavoritePage(),
               ),
             ],
           ),
           // Profile Branch
-          StatefulShellBranch(
-            navigatorKey: _profileNavigatorKey,
-            routes: [
-              GoRoute(
-                path: '/profile',
-                name: AppRoute.profile.name,
-                builder: (context, state) => const NewsSearchScreen(),
-              ),
-            ],
-          ),
+          // StatefulShellBranch(
+          //   navigatorKey: _profileNavigatorKey,
+          //   routes: [
+          //     GoRoute(
+          //       path: '/profile',
+          //       name: AppRoute.profile.name,
+          //       builder: (context, state) => const DiscoverPage(),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
 

@@ -26,7 +26,7 @@ class _SearchBarState extends ConsumerState<NewsSearchBar> {
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
           decoration: BoxDecoration(
-            color: Colors.grey.shade900,
+            color: Colors.grey.shade200,
             borderRadius: const BorderRadius.all(Radius.circular(50)),
           ),
           child: Padding(

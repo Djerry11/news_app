@@ -29,19 +29,20 @@ class NewsInfoText extends StatelessWidget {
           ),
           Text(
             title ?? 'No title',
-            maxLines: 2,
+            maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 2),
+          const SizedBox(height: 5),
           Text(
             author ?? 'Unknown Author',
             maxLines: 1,
-            style: TextStyle(
-              color: Colors.grey.shade600,
+            style: const TextStyle(
+              color: Colors.black45,
+              fontWeight: FontWeight.bold,
               fontSize: 8,
             ),
           ),
@@ -53,13 +54,12 @@ class NewsInfoText extends StatelessWidget {
                   date,
                   style: TextStyle(color: Colors.grey.shade600, fontSize: 8),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 12),
                 const Icon(Icons.timelapse, size: 8),
                 Text(
                   time,
                   style: TextStyle(color: Colors.grey.shade600, fontSize: 8),
                 ),
-                const SizedBox(width: 8),
               ],
             ),
           ),

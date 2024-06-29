@@ -1,12 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/common/news_list_tile/news_list_tile.dart';
 import 'package:news_app/src/core/network/news_repository.dart';
-import 'package:news_app/src/core/utils/constants.dart';
-import 'package:news_app/src/features/home/presentation/widgets/news_tile.dart';
-import 'package:news_app/src/providers/news_provider.dart';
+
 import 'package:news_app/src/routes/app_routes.dart';
 
 // import 'news_tile.dart';s
@@ -16,7 +13,7 @@ class NewsList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final articlesAsync = ref.watch(articlesProvider);
+    final articlesAsync = ref.watch(fetchNewsProvider());
     // final articlesAsyncValue = ref.watch(fetchNewsProvider(
     //   queryData: (
     //     category: 'Sports',
@@ -26,13 +23,15 @@ class NewsList extends ConsumerWidget {
     //   ),
     // ));
     return articlesAsync.when(
-      data: (response) {
+      data: (articles) {
+        final tLength = articles.length - 4;
         return ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: response.length,
+          itemCount: tLength,
           itemBuilder: (context, index) {
-            final article = response[index];
+            final offsetIndex = index + 4;
+            final article = articles[offsetIndex];
             return SizedBox(
               height: 120,
               width: double.infinity,
