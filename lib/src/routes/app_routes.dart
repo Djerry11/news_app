@@ -30,7 +30,7 @@ class AppRoutes {
   //     GlobalKey<NavigatorState>(debugLabel: 'profileKey');
 
   static final router = GoRouter(
-    initialLocation: '/home',
+    initialLocation: '/',
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       GoRoute(

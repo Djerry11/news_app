@@ -37,3 +37,11 @@ String formatDateTime(String dateTimeStr) {
   // Combine the formatted date and time difference
   return '${formattedDate}X$timeDifference';
 }
+
+String getApiKey() {
+  const newsApiKey = String.fromEnvironment('NEWS_API_KEY');
+  if (newsApiKey.isEmpty) {
+    throw AssertionError('NEWS_API_KEY is not set');
+  }
+  return newsApiKey;
+}

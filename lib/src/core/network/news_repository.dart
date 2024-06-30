@@ -175,8 +175,8 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:news_app/src/core/models/articles.dart';
-import 'package:news_app/src/core/utils/constants.dart';
 import 'package:news_app/src/core/utils/dio_provider.dart';
+import 'package:news_app/src/core/utils/utils.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'news_repository.g.dart';
@@ -285,7 +285,7 @@ class NewsRepository {
 @riverpod
 NewsRepository newsRepository(NewsRepositoryRef ref) => NewsRepository(
       client: ref.watch(dioProvider),
-      apiKey: API_KEY,
+      apiKey: getApiKey(),
     );
 
 /// Provider to fetch news articles, either top headlines or search results, with pagination.

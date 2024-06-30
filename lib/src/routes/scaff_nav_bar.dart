@@ -22,7 +22,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
           NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
           NavigationDestination(
               icon: Icon(
-                Icons.g_translate_outlined,
+                Icons.explore_rounded,
                 color: Colors.green,
               ),
               label: 'Explore'),

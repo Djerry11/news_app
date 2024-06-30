@@ -1,8 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'animated_welcome_text.dart';
+import 'shimmer_image_widget.dart';
 
-class OnboardingPage extends StatelessWidget {
+class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
+
+  @override
+  State<OnboardingPage> createState() => _OnboardingPageState();
+}
+
+class _OnboardingPageState extends State<OnboardingPage> {
+  final List<Map<String, String>> onboardingData = [
+    {
+      'image':
+          'https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'description':
+          'Get to know what\'s happening around the world faster than everyone.',
+    },
+    {
+      'image':
+          'https://images.unsplash.com/photo-1602303885393-4be251de62c4?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'description': 'Stay updated with the latest news and trends.',
+    },
+    {
+      'image':
+          'https://images.unsplash.com/photo-1570179538662-faa5e38e9d8f?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/',
+      'description': 'Explore news from different categories and regions.',
+    },
+  ];
+
+  int currentIndex = 0;
+
+  void _nextPage() {
+    setState(() {
+      if (currentIndex < onboardingData.length - 1) {
+        currentIndex++;
+      } else {
+        context.goNamed('home');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,44 +51,30 @@ class OnboardingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Spacer(),
-            const Text(
-              'Welcome to News World',
-              style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-              ),
+            const AnimatedWelcomeText(
+              text: 'Welcome to News World',
+            ), // Animated welcome text
+            const SizedBox(height: 20),
+            // Shimmer effect for onboarding image
+            ShimmerImageWidget(
+              imagePath: onboardingData[currentIndex]['image']!,
             ),
             const SizedBox(height: 20),
-            //Onboarding Image
-            Container(
-              height: 400,
-              width: 300,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.grey,
-                    blurRadius: 6,
-                    offset: Offset(0, 5),
-                  ),
-                ],
-                image: const DecorationImage(
-                  image: AssetImage('assets/images/onboard1.jpg'),
-                  fit: BoxFit.cover,
+            // Onboarding message text
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: AnimatedWelcomeText(
+                text: onboardingData[currentIndex]['description']!,
+                textStyle: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
                 ),
+                repeatForever: true,
+                speed: 40,
               ),
-            ),
-            const SizedBox(height: 20),
-            //Onboarding Text Message
-            const Text(
-              'Get to know what\'s happening around the world faster than everyone.',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-              ),
-              textAlign: TextAlign.center,
             ),
             const Spacer(),
+            // Navigation buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -64,13 +88,9 @@ class OnboardingPage extends StatelessWidget {
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
-                const Spacer(
-                  flex: 5,
-                ),
+                const Spacer(flex: 5),
                 ElevatedButton(
-                  onPressed: () {
-                    context.goNamed('home');
-                  },
+                  onPressed: _nextPage,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     shape: const CircleBorder(),
@@ -79,9 +99,7 @@ class OnboardingPage extends StatelessWidget {
                   ),
                   child: const Icon(Icons.arrow_forward),
                 ),
-                const Spacer(
-                  flex: 1,
-                )
+                const Spacer(flex: 1),
               ],
             ),
             const SizedBox(height: 20),
