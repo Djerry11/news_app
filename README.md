@@ -1,22 +1,23 @@
 # News App
 
-A Flutter news application that showcases trending and breaking news. The app supports bookmarking articles and saves them locally using SharedPreferences.
+A Flutter news application that showcases trending and breaking news. The app supports Favoriteing articles and saves them locally using SharedPreferences.
 
 ## Features
 
-- Trending news carousel
 - Breaking news section
 - Search functionality
-- Bookmark articles
-- Persistent storage for bookmarks
+- Favorite articles
+- Pull Refresh for new articles
+- Add favorites
+- Persistent storage for favorites
+- Read full article in webview
 
 ## Screenshots
 
-| Home Page                                       | Trending News                                   | Search News                                     |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| ![Home Page](screenshots/home_page.png)         | ![Trending News](screenshots/trending_news.png) | ![Search News](screenshots/search_news.png)     |
-| Bookmark List                                   | News Detail                                     | Splash Screen                                   |
-| ![Bookmark List](screenshots/bookmark_list.png) | ![News Detail](screenshots/news_detail.png)     | ![Splash Screen](screenshots/splash_screen.png) |
+| ![Home Page](flutter_01.png)     | ![Trending News](flutter_03.png) | ![Search News](flutter_02.png)   |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| ![Favorite List](flutter_04.png) | ![News Detail](flutter_05.png)   | ![Splash Screen](flutter_06.png) |
+| ![Favorite List](flutter_07.png) | ![News Detail](flutter_08.png)   | ![Splash Screen](flutter_09.png) |
 
 ## Getting Started
 
@@ -30,7 +31,7 @@ A Flutter news application that showcases trending and breaking news. The app su
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/news_app.git
+   git clone https://github.com/Djerry11/news_app.git
    cd news_app
    ```
 
@@ -42,15 +43,17 @@ A Flutter news application that showcases trending and breaking news. The app su
 
 3. Run the app:
 
+   - Replace `'YOUR_API_KEY'` with your News API key.
+
    ```bash
-   flutter run
+   flutter run --dart-define NEWS_API_KEY=YOUR_API_KEY
    ```
 
 ## Usage
 
 - **Home Page**: Displays the trending and latest news.
 - **Search**: Use the search bar to find news articles.
-- **Bookmark**: Tap on the bookmark icon to save articles locally.
+- **Favorite**: Tap on the Favorite icon to save articles locally.
 
 ## Contributing
 

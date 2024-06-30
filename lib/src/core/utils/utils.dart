@@ -38,6 +38,7 @@ String formatDateTime(String dateTimeStr) {
   return '${formattedDate}X$timeDifference';
 }
 
+// add your api key here
 String getApiKey() {
   const newsApiKey = String.fromEnvironment('NEWS_API_KEY');
   if (newsApiKey.isEmpty) {
