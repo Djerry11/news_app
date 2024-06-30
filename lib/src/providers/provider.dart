@@ -1,6 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:news_app/src/core/models/articles.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 //Provider to watch change and get change
 final trendingIndexProvider = StateNotifierProvider<TrendingIndex, int>((ref) {
@@ -17,20 +15,20 @@ class TrendingIndex extends StateNotifier<int> {
   int get index => state;
 }
 
-// Provider to change the bookmark status
-final bookmarkProvider =
-    StateNotifierProvider<BookmarkNotifier, List<Articles>>((ref) {
-  return BookmarkNotifier();
-});
+// // Provider to change the bookmark status
+// final bookmarkProvider =
+//     StateNotifierProvider<BookmarkNotifier, List<Articles>>((ref) {
+//   return BookmarkNotifier();
+// });
 
-class BookmarkNotifier extends StateNotifier<List<Articles>> {
-  BookmarkNotifier() : super([]);
+// class BookmarkNotifier extends StateNotifier<List<Articles>> {
+//   BookmarkNotifier() : super([]);
 
-  void addBookmark(Articles article) {
-    state = [...state, article.copyWith(isBookmarked: true)];
-  }
+//   void addBookmark(Articles article) {
+//     state = [...state, article.copyWith(isBookmarked: true)];
+//   }
 
-  void removeBookmark(Articles article) {
-    state = state.where((a) => a.url != article.url).toList();
-  }
-}
+//   void removeBookmark(Articles article) {
+//     state = state.where((a) => a.url != article.url).toList();
+//   }
+// }
