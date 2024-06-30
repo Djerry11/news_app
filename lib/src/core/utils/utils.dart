@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 String formatDateTime(String dateTimeStr) {
   // Parse the input date time string
@@ -40,9 +41,10 @@ String formatDateTime(String dateTimeStr) {
 
 // add your api key here
 String getApiKey() {
-  const newsApiKey = String.fromEnvironment('NEWS_API_KEY');
-  if (newsApiKey.isEmpty) {
-    throw AssertionError('NEWS_API_KEY is not set');
-  }
-  return newsApiKey;
+  // const newsApiKey = String.fromEnvironment('NEWS_API_KEY');
+  // if (newsApiKey.isEmpty) {
+  //   throw AssertionError('NEWS_API_KEY is not set');
+  // }
+  final newsApiKey = dotenv.env['NEWS_API_KEY1'];
+  return newsApiKey!;
 }
