@@ -103,6 +103,7 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
         }
       },
       child: responseAsync.when(
+        // Show shimmer loading effect while fetching data
         loading: () => ListView.builder(
           controller: _scrollController,
           itemCount: 5,
@@ -114,11 +115,26 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
             );
           },
         ),
-        error: (err, stack) => SomethingWentWrong(onRefresh: () {}),
+        // Show error message if the request fails
+        error: (err, stack) => const SingleChildScrollView(
+          child: SomethingWentWrong(
+              imagePath: 'assets/images/oops.png',
+              message: 'No Related News Found'),
+        ),
+
+        //showing search data
         data: (articles) {
           return articles.isEmpty
-              ? const Center(
-                  child: Text('Oops!, No matching articles found! Error404'))
+
+              /// Show no related news found message if no data is returned
+              ? const SingleChildScrollView(
+                  child: SomethingWentWrong(
+                    imagePath: 'assets/images/oops.png',
+                    message: 'No Related News Found',
+                  ),
+                )
+
+              /// Show the list of articles
               : ListView.builder(
                   controller: _scrollController,
                   itemCount: articles.length,

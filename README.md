@@ -14,10 +14,10 @@ A Flutter news application that showcases trending and breaking news. The app su
 
 ## Screenshots
 
-| ![Home Page](screenshots/flutter_01.png)             | ![Trending News](screenshots/flutter_03.png) | ![Search News](screenshots/flutter_02.png)   |
-| ---------------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| ![Favorite List](screenshots/flutter_screenshot.png) | ![News Detail](screenshots/flutter_05.png)   | ![Splash Screen](screenshots/flutter_06.png) |
-| ![Favorite List](screenshots/flutter_07.png)         | ![News Detail](screenshots/flutter_08.png)   | ![Splash Screen](screenshots/flutter_09.png) |
+| ![Home Page](screenshots/flutter_01.png)           | ![Trending News](screenshots/flutter_03.png) | ![Search News](screenshots/flutter_02.png)   |
+| -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| ![No Internet](screenshots/flutter_screenshot.png) | ![News Detail](screenshots/flutter_05.png)   | ![Splash Screen](screenshots/flutter_06.png) |
+| ![News Not Found](screenshots/flutter_404.png)     | ![Favorite News](screenshots/flutter_08.png) | ![Web News](screenshots/flutter_09.png)      |
 
 ## Getting Started
 

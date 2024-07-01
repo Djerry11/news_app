@@ -11,9 +11,18 @@ class TestPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Test Page'),
       ),
-      body: const SomethingWentWrong(
-        imagePath: 'assets/images/oops.png',
-        message: 'No Related News Found',
+      body: Flexible(
+        child: SingleChildScrollView(
+          child: RefreshIndicator(
+            onRefresh: () async {},
+            child: const SingleChildScrollView(
+              child: SomethingWentWrong(
+                imagePath: 'assets/images/oops.png',
+                message: 'No Related News Found',
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
