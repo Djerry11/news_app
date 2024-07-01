@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/news_list_tile.dart';
+import 'package:news_app/src/common_widgets/news_list_tile/news_tile_shimmer.dart';
 import 'package:news_app/src/core/network/news_repository.dart';
 
 import 'package:news_app/src/routes/app_routes.dart';
@@ -18,11 +19,11 @@ class NewsList extends ConsumerWidget {
 
     return articlesAsync.when(
       data: (articles) {
-        final tLength = articles.length - 4;
+        final totalLength = articles.length - 4;
         return ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: tLength,
+          itemCount: totalLength,
           itemBuilder: (context, index) {
             final offsetIndex = index + 4;
             final article = articles[offsetIndex];
@@ -43,7 +44,18 @@ class NewsList extends ConsumerWidget {
           },
         );
       },
-      loading: () => const Center(child: CircularProgressIndicator()),
+      loading: () => ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: 5,
+        itemBuilder: (context, index) {
+          return const SizedBox(
+            height: 120,
+            width: double.infinity,
+            child: NewsTileShimmer(),
+          );
+        },
+      ),
       error: (error, stack) => Center(child: Text('Error: $error')),
     );
   }

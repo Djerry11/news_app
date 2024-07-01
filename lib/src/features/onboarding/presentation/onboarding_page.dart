@@ -13,19 +13,19 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   final List<Map<String, String>> onboardingData = [
     {
-      'image':
-          'https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'image': 'assets/images/onboard2.jpg',
+      // 'https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       'description':
           'Get to know what\'s happening around the world faster than everyone.',
     },
     {
-      'image':
-          'https://images.unsplash.com/photo-1602303885393-4be251de62c4?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'image': 'assets/images/onboard3.jpg',
+      // 'https://images.unsplash.com/photo-1602303885393-4be251de62c4?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       'description': 'Stay updated with the latest news and trends.',
     },
     {
-      'image':
-          'https://images.unsplash.com/photo-1570179538662-faa5e38e9d8f?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/',
+      'image': 'assets/images/onboard2.jpg',
+      // 'https://images.unsplash.com/photo-1570179538662-faa5e38e9d8f?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/',
       'description': 'Explore news from different categories and regions.',
     },
   ];

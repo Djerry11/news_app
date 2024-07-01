@@ -27,8 +27,10 @@ class NewsListTile extends StatelessWidget {
     final publishedAt = article.publishedAt;
     final title = article.title;
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16.0,
+      padding: const EdgeInsets.only(
+        top: 2,
+        left: 16.0,
+        right: 16.0,
       ),
       child: Container(
         margin: const EdgeInsets.only(bottom: 8),

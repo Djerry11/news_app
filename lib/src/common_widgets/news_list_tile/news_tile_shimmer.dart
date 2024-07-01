@@ -7,7 +7,7 @@ class NewsTileShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.black26,
+      baseColor: Colors.black45,
       highlightColor: Colors.black12,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
@@ -24,6 +24,12 @@ class NewsTileShimmer extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Container(
+                    width: double.infinity,
+                    height: 20.0,
+                    color: Colors.black,
+                    margin: const EdgeInsets.only(bottom: 8.0),
+                  ),
                   Container(
                     width: double.infinity,
                     height: 20.0,
