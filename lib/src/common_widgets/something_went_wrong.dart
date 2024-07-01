@@ -19,10 +19,11 @@ class SomethingWentWrong extends StatelessWidget {
             Stack(
               children: [
                 SizedBox(
-                    width: 200,
-                    height: 200,
-                    child: Image.asset(
-                        imagePath ?? 'assets/images/somethingwrong.png')),
+                  width: 200,
+                  height: 200,
+                  child: Image.asset(
+                      imagePath ?? 'assets/images/somethingwrong.png'),
+                ),
                 const Positioned(
                   right: 0,
                   child: Text(
@@ -46,7 +47,7 @@ class SomethingWentWrong extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Visibility(
-              visible: onRefresh != null,
+              visible: onRefresh == null ? false : true,
               child: Padding(
                 padding: const EdgeInsets.only(top: 5.0),
                 child: ElevatedButton(

@@ -15,7 +15,7 @@ import 'package:news_app/src/routes/app_routes.dart';
 class NewsSearchScreen extends ConsumerStatefulWidget {
   const NewsSearchScreen({super.key});
   //TODO: Add more robust pagination based on the total results from the API
-  static const pageSize = 10;
+  static const pageSize = 20;
 
   @override
   ConsumerState<NewsSearchScreen> createState() => _NewsSearchScreenState();
@@ -116,12 +116,19 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
           },
         ),
         // Show error message if the request fails
-        error: (err, stack) => const SingleChildScrollView(
-          child: SomethingWentWrong(
-              imagePath: 'assets/images/oops.png',
-              message: 'No Related News Found'),
-        ),
-
+        error: (err, stack) {
+          print('Error: $err');
+          return SingleChildScrollView(
+            child: err.toString().contains('Failed to load search results')
+                ? const SomethingWentWrong(
+                    imagePath: 'assets/images/oops.png',
+                    message: 'No Related News Found',
+                  )
+                : SomethingWentWrong(
+                    onRefresh: () {},
+                  ),
+          );
+        },
         //showing search data
         data: (articles) {
           return articles.isEmpty
