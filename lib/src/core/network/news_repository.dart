@@ -12,12 +12,7 @@ class NewsRepository {
   final Dio client;
   final String apiKey;
 
-  /// Fetch top headlines from the news API.
-  ///
-  /// [page] specifies the page number for pagination.
-  /// [country] specifies the country code for the headlines.
-  /// [category] specifies the news category.
-  /// [cancelToken] allows canceling the request if necessary.
+  //fetch top headlines :: endpoint: /v2/top-headlines
   Future<List<Articles>> fetchTopHeadlines({
     int page = 1,
     String country = 'us',
@@ -25,6 +20,7 @@ class NewsRepository {
     CancelToken? cancelToken,
     int pageSize = 20,
   }) async {
+    // Create the News api URI for the top headlines.
     final uri = Uri(
       scheme: 'https',
       host: 'newsapi.org',
@@ -61,18 +57,15 @@ class NewsRepository {
     }
   }
 
-  /// Search news articles based on the query.
-  ///
-  /// [page] specifies the page number for pagination.
-  /// [query] specifies the search term.
-  /// [sortBy] specifies the sorting criteria.
-  /// [cancelToken] allows canceling the request if necessary.
+  //------------------## EveryThing EndPoint ##------------------
+  //search the news with query :: endpoint: /v2/everything
   Future<List<Articles>> searchNews({
     int page = 1,
     String query = 'news',
     String sortBy = 'publishedAt',
     CancelToken? cancelToken,
   }) async {
+    // Create the News api URI for the search query everything.
     final uri = Uri(
       scheme: 'https',
       host: 'newsapi.org',
@@ -143,7 +136,7 @@ Future<List<Articles>> fetchNews(
   // Start a timer to dispose the cached data after a certain period when the provider is not used.
   ref.onCancel(() {
     timer = Timer(const Duration(seconds: 30), () {
-      link.close();
+      link.close(); // kill the link
     });
   });
 

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/features/explore/data/news_query_notifier.dart';
 
 class NewsSearchBar extends ConsumerStatefulWidget {
-  const NewsSearchBar({super.key});
-
+  const NewsSearchBar({super.key, required this.isConnected});
+  final bool isConnected;
   @override
   ConsumerState<NewsSearchBar> createState() => _SearchBarState();
 }
@@ -38,22 +39,25 @@ class _SearchBarState extends ConsumerState<NewsSearchBar> {
                 Expanded(
                   child: Center(
                     child: TextField(
-                      controller: _controller,
-                      style: const TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.zero,
-                        isDense: true,
-                        hintText: 'Search news',
-                        hintStyle: TextStyle(color: Colors.grey.shade400),
-                      ),
-                      onEditingComplete: () {
-                        FocusManager.instance.primaryFocus?.unfocus();
-                      },
-                      onChanged: (text) => ref
-                          .read(newsQueryNotifierProvider.notifier)
-                          .setQuery(text),
-                    ),
+                        controller: _controller,
+                        style: const TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.zero,
+                          isDense: true,
+                          hintText: 'Search news',
+                          hintStyle: TextStyle(color: Colors.grey.shade400),
+                        ),
+                        onEditingComplete: () {
+                          FocusManager.instance.primaryFocus?.unfocus();
+                        },
+                        onChanged: (text) {
+                          if (widget.isConnected) {
+                            ref
+                                .read(newsQueryNotifierProvider.notifier)
+                                .setQuery(text);
+                          }
+                        }),
                   ),
                 ),
               ],

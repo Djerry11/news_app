@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -47,4 +48,19 @@ String getApiKey() {
   // }
   final newsApiKey = dotenv.env['NEWS_API_KEY1'];
   return newsApiKey!;
+}
+
+// snackbar dialog function
+void showSnackbarDialog(BuildContext context, String message, Color color) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      duration: const Duration(seconds: 5),
+      content: Text(
+        message,
+        style: TextStyle(
+          color: color,
+        ),
+      ),
+    ),
+  );
 }

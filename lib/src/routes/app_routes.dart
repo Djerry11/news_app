@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news_app/src/common_widgets/test.dart';
 import 'package:news_app/src/core/models/articles.dart';
 import 'package:news_app/src/features/explore/presentation/news_search_screen.dart';
 import 'package:news_app/src/features/favorites/presentation/favorite_page.dart';
 import 'package:news_app/src/features/onboarding/presentation/onboarding_page.dart';
 import 'package:news_app/src/common_widgets/webview_article.dart';
 import 'package:news_app/src/routes/scaff_nav_bar.dart';
+import 'package:news_app/src/routes/scaff_with_connection.dart';
 import '../features/home/presentation/home_page.dart';
 
 enum AppRoute {
@@ -26,15 +28,23 @@ class AppRoutes {
       GlobalKey<NavigatorState>(debugLabel: 'homeKey');
   static final _catNavigatorKey =
       GlobalKey<NavigatorState>(debugLabel: 'catKey');
-  // static final _profileNavigatorKey =
-  //     GlobalKey<NavigatorState>(debugLabel: 'profileKey');
+  static final _profileNavigatorKey =
+      GlobalKey<NavigatorState>(debugLabel: 'profileKey');
 
   static final router = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/profile',
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
+      // Onboarding Page ;; First page to be shown
       GoRoute(
         path: '/',
+        name: 'root',
+        builder: (context, state) => const ScaffoldWithConnectionChecker(
+          child: OnboardingPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/onboarding',
         name: 'onboarding',
         builder: (context, state) => const OnboardingPage(),
       ),
@@ -81,20 +91,20 @@ class AppRoutes {
             ],
           ),
           // Profile Branch
-          // StatefulShellBranch(
-          //   navigatorKey: _profileNavigatorKey,
-          //   routes: [
-          //     GoRoute(
-          //       path: '/profile',
-          //       name: AppRoute.profile.name,
-          //       builder: (context, state) => const DiscoverPage(),
-          //     ),
-          //   ],
-          // ),
+          StatefulShellBranch(
+            navigatorKey: _profileNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/profile',
+                name: AppRoute.profile.name,
+                builder: (context, state) => const TestPage(),
+              ),
+            ],
+          ),
         ],
       ),
 
-      // Article details
+      //Web view Article details :: open the article in web view
       GoRoute(
         path: '/webViewArticle/:id',
         name: AppRoute.webViewArticle.name,

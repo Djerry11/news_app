@@ -15,14 +15,7 @@ class NewsList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final articlesAsync = ref.watch(fetchNewsProvider(category: category));
-    // final articlesAsyncValue = ref.watch(fetchNewsProvider(
-    //   queryData: (
-    //     category: 'Sports',
-    //     query: '',
-    //     page: 1,
-    //     sortBy: null,
-    //   ),
-    // ));
+
     return articlesAsync.when(
       data: (articles) {
         final tLength = articles.length - 4;

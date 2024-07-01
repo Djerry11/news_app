@@ -91,11 +91,13 @@ class TrendingNewsCarousel extends ConsumerWidget {
       fetchNewsProvider(
         category: category ?? 'general',
         page: 1,
-        pageSize: 7,
+        pageSize: 10,
       ),
     );
     return trendingNewsAsync.when(
       data: (data) {
+        final itemCounts =
+            trendingItems < data.length ? trendingItems : data.length;
         return CarouselSlider.builder(
           key: const PageStorageKey('carousel_slider'),
           options: CarouselOptions(
@@ -112,7 +114,7 @@ class TrendingNewsCarousel extends ConsumerWidget {
               ref.read(trendingIndexProvider.notifier).setIndex(index);
             },
           ),
-          itemCount: trendingItems,
+          itemCount: itemCounts,
           itemBuilder: (context, index, realIndex) {
             return TrendingNewsItem(
               article: data[index],
