@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:news_app/src/common_widgets/no_internet_connection.dart';
+import 'package:news_app/src/common_widgets/something_went_wrong.dart';
 
 class TestPage extends ConsumerWidget {
   const TestPage({super.key});
@@ -8,9 +8,13 @@ class TestPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Test Page'),
-        ),
-        body: NoInternetConnection(onRefresh: () {}));
+      appBar: AppBar(
+        title: const Text('Test Page'),
+      ),
+      body: const SomethingWentWrong(
+        imagePath: 'assets/images/oops.png',
+        message: 'No Related News Found',
+      ),
+    );
   }
 }

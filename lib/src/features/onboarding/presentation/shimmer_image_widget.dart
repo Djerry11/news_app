@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class ShimmerImageWidget extends StatelessWidget {
   final String imagePath;
@@ -26,6 +24,7 @@ class ShimmerImageWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         child: Image.asset(
           imagePath,
+          fit: BoxFit.cover,
         ),
         // child: CachedNetworkImage(
         //   imageUrl: imagePath,

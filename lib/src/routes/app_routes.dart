@@ -7,7 +7,7 @@ import 'package:news_app/src/features/favorites/presentation/favorite_page.dart'
 import 'package:news_app/src/features/onboarding/presentation/onboarding_page.dart';
 import 'package:news_app/src/common_widgets/webview_article.dart';
 import 'package:news_app/src/routes/scaff_nav_bar.dart';
-import 'package:news_app/src/routes/scaff_with_connection.dart';
+
 import '../features/home/presentation/home_page.dart';
 
 enum AppRoute {
@@ -35,16 +35,16 @@ class AppRoutes {
     initialLocation: '/profile',
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
-      // Onboarding Page ;; First page to be shown
+      // // Onboarding Page ;; First page to be shown
+      // GoRoute(
+      //   path: '/',
+      //   name: 'root',
+      //   builder: (context, state) => const ScaffoldWithConnectionChecker(
+      //     child: OnboardingPage(),
+      //   ),
+      // ),
       GoRoute(
         path: '/',
-        name: 'root',
-        builder: (context, state) => const ScaffoldWithConnectionChecker(
-          child: OnboardingPage(),
-        ),
-      ),
-      GoRoute(
-        path: '/onboarding',
         name: 'onboarding',
         builder: (context, state) => const OnboardingPage(),
       ),

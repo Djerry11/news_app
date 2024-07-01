@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:news_app/src/core/models/articles.dart';
+import 'package:news_app/src/core/network/internet_service.dart';
 import 'package:news_app/src/core/utils/dio_provider.dart';
 import 'package:news_app/src/core/utils/utils.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -119,6 +120,11 @@ Future<List<Articles>> fetchNews(
   int pageSize = 20,
 }) async {
   final newsRepo = ref.watch(newsRepositoryProvider);
+  final isOnline = ref.watch(connectivityNotifierProvider);
+
+  if (!isOnline) {
+    throw Exception('No Internet Connection');
+  }
 
   // Cancel token to cancel the request if necessary.
   final cancelToken = CancelToken();

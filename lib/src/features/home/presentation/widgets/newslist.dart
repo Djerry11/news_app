@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/news_list_tile.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/news_tile_shimmer.dart';
+import 'package:news_app/src/common_widgets/something_went_wrong.dart';
 import 'package:news_app/src/core/network/news_repository.dart';
 
 import 'package:news_app/src/routes/app_routes.dart';
@@ -56,7 +57,7 @@ class NewsList extends ConsumerWidget {
           );
         },
       ),
-      error: (error, stack) => Center(child: Text('Error: $error')),
+      error: (error, stack) => SomethingWentWrong(onRefresh: () {}),
     );
   }
 }

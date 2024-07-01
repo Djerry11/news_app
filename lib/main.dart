@@ -1,11 +1,10 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+
 import 'package:news_app/src/common_widgets/custom_snackbar.dart';
 import 'package:news_app/src/core/network/internet_service.dart';
-import 'package:news_app/src/core/utils/utils.dart';
+
 import './src/routes/app_routes.dart';
 
 Future main() async {
@@ -40,6 +39,7 @@ class _MyAppState extends ConsumerState<MyApp> {
             'Widget is online rebuild: ${DateTime.now().millisecondsSinceEpoch}');
 
         final isOnline = ref.watch(connectivityNotifierProvider);
+        print("isOnline changed: $isOnline");
 
         return Stack(
           children: [
