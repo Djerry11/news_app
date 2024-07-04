@@ -17,7 +17,7 @@ class NewsListTile extends StatelessWidget {
   final int? debugIndex;
   final VoidCallback? onPressed;
 
-  static const height = 120.0;
+  static const imageWidth = 120.0;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class NewsListTile extends StatelessWidget {
       ),
       child: Container(
         margin: const EdgeInsets.only(bottom: 8),
-        height: height,
+        height: imageWidth,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white70,
@@ -55,10 +55,11 @@ class NewsListTile extends StatelessWidget {
               child: Stack(
                 children: [
                   SizedBox(
-                    width: height,
-                    height: height,
+                    width: imageWidth,
+                    height: imageWidth,
                     child: NewsListImage(
                       imageUrl: imageUrl!,
+                      imageWidth: imageWidth,
                     ),
                   ),
                   // debugging hint to show the tile index

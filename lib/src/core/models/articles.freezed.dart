@@ -27,7 +27,6 @@ mixin _$Articles {
   String? get url => throw _privateConstructorUsedError;
   String? get urlToImage => throw _privateConstructorUsedError;
   String? get publishedAt => throw _privateConstructorUsedError;
-  String? get content => throw _privateConstructorUsedError;
   bool get isBookmarked => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +48,6 @@ abstract class $ArticlesCopyWith<$Res> {
       String? url,
       String? urlToImage,
       String? publishedAt,
-      String? content,
       bool isBookmarked});
 
   $SourceCopyWith<$Res>? get source;
@@ -75,7 +73,6 @@ class _$ArticlesCopyWithImpl<$Res, $Val extends Articles>
     Object? url = freezed,
     Object? urlToImage = freezed,
     Object? publishedAt = freezed,
-    Object? content = freezed,
     Object? isBookmarked = null,
   }) {
     return _then(_value.copyWith(
@@ -106,10 +103,6 @@ class _$ArticlesCopyWithImpl<$Res, $Val extends Articles>
       publishedAt: freezed == publishedAt
           ? _value.publishedAt
           : publishedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      content: freezed == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
               as String?,
       isBookmarked: null == isBookmarked
           ? _value.isBookmarked
@@ -147,7 +140,6 @@ abstract class _$$ArticlesImplCopyWith<$Res>
       String? url,
       String? urlToImage,
       String? publishedAt,
-      String? content,
       bool isBookmarked});
 
   @override
@@ -172,7 +164,6 @@ class __$$ArticlesImplCopyWithImpl<$Res>
     Object? url = freezed,
     Object? urlToImage = freezed,
     Object? publishedAt = freezed,
-    Object? content = freezed,
     Object? isBookmarked = null,
   }) {
     return _then(_$ArticlesImpl(
@@ -204,10 +195,6 @@ class __$$ArticlesImplCopyWithImpl<$Res>
           ? _value.publishedAt
           : publishedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      content: freezed == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String?,
       isBookmarked: null == isBookmarked
           ? _value.isBookmarked
           : isBookmarked // ignore: cast_nullable_to_non_nullable
@@ -227,7 +214,6 @@ class _$ArticlesImpl implements _Articles {
       this.url,
       this.urlToImage,
       this.publishedAt,
-      this.content,
       this.isBookmarked = false});
 
   factory _$ArticlesImpl.fromJson(Map<String, dynamic> json) =>
@@ -248,14 +234,12 @@ class _$ArticlesImpl implements _Articles {
   @override
   final String? publishedAt;
   @override
-  final String? content;
-  @override
   @JsonKey()
   final bool isBookmarked;
 
   @override
   String toString() {
-    return 'Articles(source: $source, author: $author, title: $title, description: $description, url: $url, urlToImage: $urlToImage, publishedAt: $publishedAt, content: $content, isBookmarked: $isBookmarked)';
+    return 'Articles(source: $source, author: $author, title: $title, description: $description, url: $url, urlToImage: $urlToImage, publishedAt: $publishedAt, isBookmarked: $isBookmarked)';
   }
 
   @override
@@ -273,7 +257,6 @@ class _$ArticlesImpl implements _Articles {
                 other.urlToImage == urlToImage) &&
             (identical(other.publishedAt, publishedAt) ||
                 other.publishedAt == publishedAt) &&
-            (identical(other.content, content) || other.content == content) &&
             (identical(other.isBookmarked, isBookmarked) ||
                 other.isBookmarked == isBookmarked));
   }
@@ -281,7 +264,7 @@ class _$ArticlesImpl implements _Articles {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, source, author, title,
-      description, url, urlToImage, publishedAt, content, isBookmarked);
+      description, url, urlToImage, publishedAt, isBookmarked);
 
   @JsonKey(ignore: true)
   @override
@@ -306,7 +289,6 @@ abstract class _Articles implements Articles {
       final String? url,
       final String? urlToImage,
       final String? publishedAt,
-      final String? content,
       final bool isBookmarked}) = _$ArticlesImpl;
 
   factory _Articles.fromJson(Map<String, dynamic> json) =
@@ -326,8 +308,6 @@ abstract class _Articles implements Articles {
   String? get urlToImage;
   @override
   String? get publishedAt;
-  @override
-  String? get content;
   @override
   bool get isBookmarked;
   @override

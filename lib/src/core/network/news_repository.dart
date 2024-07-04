@@ -97,7 +97,7 @@ class NewsRepository {
         throw Exception('Failed to load search results');
       }
     } catch (e) {
-      throw Exception('Failed to load search results: $e');
+      throw Exception('Something went wrong: $e');
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/favorite_button.dart';
 import 'package:news_app/src/core/models/articles.dart';
+import 'package:news_app/src/localization/string_hardcoded.dart';
 import 'package:news_app/src/routes/app_routes.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -10,16 +11,17 @@ class TrendingNewsItem extends StatelessWidget {
   const TrendingNewsItem({
     super.key,
     required this.article,
+    required this.maxWidth,
   });
-
+  final double maxWidth;
   final Articles article;
 
   @override
   Widget build(BuildContext context) {
-    final maxWidth = MediaQuery.of(context).size.width;
     final imageUrl = article.urlToImage;
     final trendingTitle = article.title;
     final trendingDescription = article.description;
+    final cacheWidth = maxWidth;
 
     return GestureDetector(
       onTap: () {
@@ -54,6 +56,7 @@ class TrendingNewsItem extends StatelessWidget {
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: double.infinity,
+                memCacheWidth: cacheWidth.cacheSize(context),
                 placeholder: (context, url) => Shimmer.fromColors(
                   baseColor: Colors.grey[300]!,
                   highlightColor: Colors.grey[100]!,

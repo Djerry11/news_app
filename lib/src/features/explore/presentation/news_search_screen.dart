@@ -73,10 +73,8 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
                     ? showSearchContents(responseAsync)
                     : SingleChildScrollView(
                         child: NoInternetConnection(
-                          onRefresh: () {
-                            setState(() {
-                              _currentPage = 1;
-                            });
+                          onRefresh: () async {
+                            onRefresh();
                           },
                         ),
                       ),
@@ -92,15 +90,7 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
     return RefreshIndicator(
       onRefresh: () async {
         // Reset the current page and invalidate the provider to refresh the data.
-        setState(() {
-          _currentPage = 1;
-        });
-        ref.invalidate(fetchNewsProvider);
-        try {
-          await ref.read(fetchNewsProvider(page: 1).future);
-        } catch (e) {
-          // Handle error silently as the provider error state is managed inside the ListView.
-        }
+        await onRefresh();
       },
       child: responseAsync.when(
         // Show shimmer loading effect while fetching data
@@ -117,7 +107,7 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
         ),
         // Show error message if the request fails
         error: (err, stack) {
-          print('Error: $err');
+          // print('Error: $err');
           return SingleChildScrollView(
             child: err.toString().contains('Failed to load search results')
                 ? const SomethingWentWrong(
@@ -125,7 +115,9 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
                     message: 'No Related News Found',
                   )
                 : SomethingWentWrong(
-                    onRefresh: () {},
+                    onRefresh: () async {
+                      onRefresh();
+                    },
                   ),
           );
         },
@@ -161,5 +153,18 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
         },
       ),
     );
+  }
+
+  Future<void> onRefresh() async {
+    // Reset the current page and invalidate the provider to refresh the data.
+    setState(() {
+      _currentPage = 1;
+    });
+    ref.invalidate(fetchNewsProvider);
+    try {
+      await ref.read(fetchNewsProvider(page: 1).future);
+    } catch (e) {
+      // Handle error silently as the provider error state is managed inside the ListView.
+    }
   }
 }

@@ -14,7 +14,6 @@ class Articles with _$Articles {
     String? url,
     String? urlToImage,
     String? publishedAt,
-    String? content,
     @Default(false) bool isBookmarked,
   }) = _Articles;
 

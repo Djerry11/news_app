@@ -17,7 +17,6 @@ _$ArticlesImpl _$$ArticlesImplFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String?,
       urlToImage: json['urlToImage'] as String?,
       publishedAt: json['publishedAt'] as String?,
-      content: json['content'] as String?,
       isBookmarked: json['isBookmarked'] as bool? ?? false,
     );
 
@@ -30,6 +29,5 @@ Map<String, dynamic> _$$ArticlesImplToJson(_$ArticlesImpl instance) =>
       'url': instance.url,
       'urlToImage': instance.urlToImage,
       'publishedAt': instance.publishedAt,
-      'content': instance.content,
       'isBookmarked': instance.isBookmarked,
     };
