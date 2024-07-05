@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomSnackbar extends StatefulWidget {
@@ -92,18 +93,25 @@ class _CustomSnackbarState extends State<CustomSnackbar>
                 ],
               ),
               Positioned(
-                right: 0,
-                top: -10,
-                child: TextButton(
-                  onPressed: () {
-                    _controller.reverse().then((_) => widget.onDismissed());
-                  },
-                  child: const Text(
-                    'RETRY',
-                    style: TextStyle(color: Colors.greenAccent),
+                  right: 0,
+                  top: -10,
+                  child: IconButton(
+                    icon:
+                        const Icon(CupertinoIcons.refresh, color: Colors.green),
+                    onPressed: () {
+                      _controller.reverse().then((_) => widget.onDismissed());
+                    },
+                  )
+                  // child: TextButton(
+                  //   onPressed: () {
+                  //     _controller.reverse().then((_) => widget.onDismissed());
+                  //   },
+                  //   child: const Text(
+                  //     'RETRY',
+                  //     style: TextStyle(color: Colors.greenAccent),
+                  //   ),
+                  // ),
                   ),
-                ),
-              ),
             ],
           ),
         ),

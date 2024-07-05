@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:news_app/src/common_widgets/custom_snackbar.dart';
+import 'package:news_app/src/common_widgets/connection_errors/custom_snackbar.dart';
 import 'package:news_app/src/core/network/internet_service.dart';
 import 'package:news_app/src/core/theme/data/theme_provider.dart';
 import 'package:news_app/src/core/theme/domain/dark_theme.dart';

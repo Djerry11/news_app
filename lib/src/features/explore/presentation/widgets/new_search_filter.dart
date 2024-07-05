@@ -11,8 +11,8 @@ void showFilterSheet(BuildContext context, ref, {required double maxWidth}) {
     context: context,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(40),
-        topRight: Radius.circular(40),
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(20),
       ),
     ),
     sheetAnimationStyle: AnimationStyle(
@@ -21,18 +21,18 @@ void showFilterSheet(BuildContext context, ref, {required double maxWidth}) {
     builder: (BuildContext context) {
       return SingleChildScrollView(
         child: Container(
-          height: 550,
+          height: 500,
           width: MediaQuery.of(context).size.width,
           padding: const EdgeInsets.only(
             top: 20,
             left: 10,
             right: 10,
           ),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40),
-              topRight: Radius.circular(40),
+          decoration: BoxDecoration(
+            color: Colors.grey.shade200,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
             ),
           ),
           child: Column(
@@ -93,7 +93,7 @@ class FilterModel extends ConsumerWidget {
     final filterList =
         enumValue.map((value) => value.toString().split('.').last).toList();
     var selectedValue = ref.watch(filterNotifierProvider);
-    print('selectedValue: $selectedValue');
+    // print('selectedValue: $selectedValue');s
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -123,8 +123,10 @@ class FilterModel extends ConsumerWidget {
                   ),
                   showCheckmark: false,
                   shape: RoundedRectangleBorder(
-                    side: const BorderSide(
-                      color: Colors.transparent,
+                    side: BorderSide(
+                      color: selectedValue.toString().contains(value)
+                          ? Colors.blue
+                          : Colors.grey.shade300,
                     ),
                     borderRadius: BorderRadius.circular(19),
                   ),

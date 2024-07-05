@@ -13,8 +13,8 @@ class GradientButton extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: [
-            Color.fromARGB(255, 121, 167, 205),
-            Color.fromARGB(255, 28, 32, 154)
+            Color.fromARGB(255, 115, 132, 229),
+            Color.fromARGB(255, 14, 16, 72)
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
