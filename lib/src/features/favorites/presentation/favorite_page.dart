@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/news_list_tile.dart';
 import 'package:news_app/src/features/favorites/data/favorite_controller.dart';
+import 'package:news_app/src/localization/extensions.dart';
 
 import 'package:news_app/src/routes/app_routes.dart';
 
@@ -17,11 +18,10 @@ class FavoritePage extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Bookmarks',
-            style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.grey.shade600,
+            'Bookmarks'.hardcoded,
+            style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                  fontSize: 28,
+                  color: const Color(0xFF867f7f),
                 ),
           ),
         ),

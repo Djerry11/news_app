@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/news_list_tile.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/news_tile_shimmer.dart';
-import 'package:news_app/src/common_widgets/no_internet_connection.dart';
-import 'package:news_app/src/common_widgets/something_went_wrong.dart';
+import 'package:news_app/src/common_widgets/connection_errors/no_internet_connection.dart';
+import 'package:news_app/src/common_widgets/connection_errors/something_went_wrong.dart';
 import 'package:news_app/src/core/network/internet_service.dart';
 import 'package:news_app/src/core/network/news_repository.dart';
 import 'package:news_app/src/core/utils/constants.dart';
@@ -88,11 +88,9 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
                           text: 'Discover\n'.hardcoded,
                           style: Theme.of(context)
                               .textTheme
-                              .displayLarge!
+                              .displayMedium!
                               .copyWith(
-                                fontSize: 30,
-                                color: Colors.grey.shade600,
-                                fontWeight: FontWeight.w400,
+                                color: const Color(0xFF867f7f),
                               ),
                         ),
                         TextSpan(

@@ -50,6 +50,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                 iconColor: Colors.black87,
               ),
             ),
+            title: Text(
+              'NewsPulse',
+              style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                    fontSize: 28,
+                    color: const Color(0xFF867f7f),
+                  ),
+            ),
             actions: [
               RoundIconButton(
                 onPressed: () {

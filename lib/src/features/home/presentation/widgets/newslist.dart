@@ -58,7 +58,9 @@ class NewsList extends ConsumerWidget {
           );
         },
       ),
-      error: (error, stack) => SomethingWentWrong(onRefresh: () {}),
+      error: (error, stack) => SomethingWentWrong(onRefresh: () {
+        ref.read(fetchNewsProvider(page: 1));
+      }),
     );
   }
 }

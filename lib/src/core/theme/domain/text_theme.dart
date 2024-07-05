@@ -7,6 +7,11 @@ const customTextTheme = TextTheme(
       FontVariation('wght', 700),
     ],
   ),
+  displayMedium: TextStyle(
+    fontFamily: 'Agbalumo',
+    fontSize: 30,
+    color: Color(0xFF867f7f),
+  ),
   bodyLarge: TextStyle(
     fontFamily: 'OpenSans',
     fontVariations: [
