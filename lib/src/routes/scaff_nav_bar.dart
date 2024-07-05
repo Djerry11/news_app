@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,7 +29,10 @@ class _ScaffoldWithNestedNavigationState
         selectedIndex: widget.navigationShell.currentIndex,
         height: 60,
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
+          NavigationDestination(
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
           NavigationDestination(
               icon: Icon(
                 Icons.explore_rounded,
@@ -41,10 +45,10 @@ class _ScaffoldWithNestedNavigationState
                 color: Colors.purple,
               ),
               label: 'Bookmarks'),
-          NavigationDestination(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
+          // NavigationDestination(
+          //   icon: Icon(Icons.person),
+          //   label: 'Profile',
+          // ),
         ],
         onDestinationSelected: _goBranch,
       ),

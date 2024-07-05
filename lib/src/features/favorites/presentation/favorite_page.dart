@@ -16,12 +16,13 @@ class FavoritePage extends ConsumerWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Favorites News',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
+          title: Text(
+            'Bookmarks',
+            style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w300,
+                  color: Colors.grey.shade600,
+                ),
           ),
         ),
         body: localArticlesAsync.when(

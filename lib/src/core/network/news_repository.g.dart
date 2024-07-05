@@ -21,7 +21,7 @@ final newsRepositoryProvider = AutoDisposeProvider<NewsRepository>.internal(
 );
 
 typedef NewsRepositoryRef = AutoDisposeProviderRef<NewsRepository>;
-String _$fetchNewsHash() => r'83f4f782e4cd8c10e0797d9bda613243773c2236';
+String _$fetchNewsHash() => r'e69ea2652a800fb4567c6cee6da5ab913b3e74ab';
 
 /// Copied from Dart SDK
 class _SystemHash {

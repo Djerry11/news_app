@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:news_app/src/features/home/presentation/trending/trending_news_carousel.dart';
 import 'package:news_app/src/features/home/presentation/trending/trending_news_indicator.dart';
+import 'package:news_app/src/localization/extensions.dart';
 
 class TrendingNews extends ConsumerWidget {
   const TrendingNews({super.key, required this.category});
@@ -38,17 +40,18 @@ class TrendingNewsHeader extends StatelessWidget {
             children: [
               Text(
                 'Breaking news!',
-                style: Theme.of(context)
-                    .textTheme
-                    .displayLarge!
-                    .copyWith(fontSize: 24, fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.grey.shade600,
+                    ),
               ),
               IconButton(
                 onPressed: () {
                   //TODO: Implement the see all button
                 },
                 icon: const Icon(
-                  Icons.horizontal_rule,
+                  CupertinoIcons.list_dash,
                 ),
               ),
             ],
@@ -56,12 +59,15 @@ class TrendingNewsHeader extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
             decoration: BoxDecoration(
-              color: Colors.orange.shade400,
+              color: Colors.purple.shade400,
               borderRadius: BorderRadius.circular(5),
             ),
             child: Text(
-              category!.toUpperCase(),
-              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+              category!.toCapitalized(),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
         ],

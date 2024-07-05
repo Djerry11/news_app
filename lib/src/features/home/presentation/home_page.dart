@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/common_widgets/no_internet_connection.dart';
@@ -33,8 +34,13 @@ class _HomePageState extends ConsumerState<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
+            style: ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll(
+                Colors.grey.shade100,
+              ),
+            ),
             icon: const Icon(
-              Icons.menu_sharp,
+              CupertinoIcons.line_horizontal_3,
               fill: 0.9,
               size: 28,
               color: Colors.black87,

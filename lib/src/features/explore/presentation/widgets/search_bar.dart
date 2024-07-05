@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/features/explore/data/news_query_notifier.dart';
+import 'package:news_app/src/features/explore/presentation/widgets/new_search_filter.dart';
 
 class NewsSearchBar extends ConsumerStatefulWidget {
   const NewsSearchBar({super.key, required this.isConnected});
@@ -64,8 +65,14 @@ class _SearchBarState extends ConsumerState<NewsSearchBar> {
                         }),
                   ),
                 ),
+                const SizedBox(
+                  width: 10,
+                ),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showFilterSheet(context, ref,
+                          maxWidth: MediaQuery.of(context).size.width);
+                    },
                     icon: const Icon(CupertinoIcons.slider_horizontal_3,
                         color: Colors.grey)),
               ],

@@ -5,11 +5,10 @@ import 'package:news_app/src/common_widgets/news_list_tile/news_list_tile.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/news_tile_shimmer.dart';
 import 'package:news_app/src/common_widgets/no_internet_connection.dart';
 import 'package:news_app/src/common_widgets/something_went_wrong.dart';
-import 'package:news_app/src/core/models/articles.dart';
 import 'package:news_app/src/core/network/internet_service.dart';
 import 'package:news_app/src/core/network/news_repository.dart';
 import 'package:news_app/src/core/utils/constants.dart';
-import 'package:news_app/src/features/explore/presentation/search_bar.dart';
+import 'package:news_app/src/features/explore/presentation/widgets/search_bar.dart';
 import 'package:news_app/src/features/explore/data/news_query_notifier.dart';
 import 'package:news_app/src/localization/extensions.dart';
 import 'package:news_app/src/routes/app_routes.dart';
@@ -62,96 +61,108 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: 'Discover\n',
-                style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w400,
-                    ),
-              ),
-              TextSpan(
-                text: 'News from all around the world',
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                    ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      body: Consumer(
-        builder: (context, ref, child) {
-          final query = ref.watch(newsQueryNotifierProvider);
+      body: SafeArea(
+        child: Consumer(
+          builder: (context, ref, child) {
+            final query = ref.watch(newsQueryNotifierProvider);
 
-          final isOnline = ref.watch(connectivityNotifierProvider);
-          final isSearchTextEmpty = query.isEmpty;
-          return Column(
-            children: [
-              NewsSearchBar(
-                isConnected: isOnline,
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  //  Catergory Chips -- General, Business, Health, Science, Sports, Technology
-                  children: NewsCategory.values.map((category) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: ChoiceChip(
-                        label: Text(
-                          category.name.toCapitalized(),
+            final isOnline = ref.watch(connectivityNotifierProvider);
+            final isSearchTextEmpty = query.isEmpty;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: RichText(
+                    textAlign: TextAlign.start,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Discover\n'.hardcoded,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(
+                                fontSize: 30,
+                                color: Colors.grey.shade600,
+                                fontWeight: FontWeight.w400,
+                              ),
                         ),
-                        showCheckmark: false,
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(
-                            color: Colors.transparent,
-                          ),
-                          borderRadius: BorderRadius.circular(19),
+                        TextSpan(
+                          text: 'News from all around the world'.hardcoded,
+                          style:
+                              Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                         ),
-                        labelStyle:
-                            Theme.of(context).textTheme.bodySmall!.copyWith(
-                                  color: selectedCategory == category
-                                      ? Colors.white
-                                      : Colors.black54,
-                                ),
-                        selected: selectedCategory == category,
-                        selectedColor: Colors.blue,
-                        backgroundColor: Colors.grey.shade100,
-                        onSelected: (selected) {
-                          onSelectCategory(category);
-                        },
-                      ),
-                    );
-                  }).toList(),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              Flexible(
-                child: isSearchTextEmpty
-                    ? const SingleChildScrollView(
-                        child: SomethingWentWrong(
-                          imagePath: 'assets/images/oops2.png',
-                          message: 'Search for news ...',
-                          showOops: false,
-                        ),
-                      )
-                    : isOnline
-                        ? showSearchContents(query)
-                        : NoInternetConnection(
-                            onRefresh: () async {
-                              onRefresh();
-                            },
+                NewsSearchBar(
+                  isConnected: isOnline,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //  Catergory Chips -- General, Business, Health, Science, Sports, Technology
+                    children: NewsCategory.values.map((category) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: ChoiceChip(
+                          label: Text(
+                            category.name == 'general'
+                                ? 'All'
+                                : category.name.toCapitalized(),
                           ),
-              ),
-            ],
-          );
-        },
+                          showCheckmark: false,
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(
+                              color: Colors.transparent,
+                            ),
+                            borderRadius: BorderRadius.circular(19),
+                          ),
+                          labelStyle:
+                              Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    color: selectedCategory == category
+                                        ? Colors.white
+                                        : Colors.black54,
+                                  ),
+                          selected: selectedCategory == category,
+                          selectedColor: Colors.blue,
+                          backgroundColor: Colors.grey.shade100,
+                          onSelected: (selected) {
+                            onSelectCategory(category);
+                          },
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Flexible(
+                  child: isSearchTextEmpty
+                      ? const SingleChildScrollView(
+                          child: SomethingWentWrong(
+                            imagePath: 'assets/images/oops2.png',
+                            message: 'Search for news ...',
+                            showOops: false,
+                          ),
+                        )
+                      : isOnline
+                          ? showSearchContents(query)
+                          : NoInternetConnection(
+                              onRefresh: () async {
+                                onRefresh();
+                              },
+                            ),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
