@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:news_app/src/core/models/articles.dart';
 import 'package:news_app/src/core/network/internet_service.dart';
@@ -16,7 +17,8 @@ class NewsRepository {
   //fetch top headlines :: endpoint: /v2/top-headlines
   Future<List<Articles>> fetchTopHeadlines({
     int page = 1,
-    String country = 'us',
+    // String country = '',
+    String? query,
     String? category,
     CancelToken? cancelToken,
     int pageSize = 20,
@@ -27,10 +29,11 @@ class NewsRepository {
       host: 'newsapi.org',
       path: '/v2/top-headlines',
       queryParameters: {
-        'country': country,
+        // 'country': country,
         'apiKey': apiKey,
         'page': '$page',
         'language': 'en',
+        'q': query,
         'pageSize': '$pageSize',
         if (category != null) 'category': category,
       },
@@ -39,7 +42,10 @@ class NewsRepository {
     try {
       final response = await client.getUri(uri, cancelToken: cancelToken);
       final jsonResponse = response.data;
-      if (jsonResponse['status'] == 'ok' && jsonResponse['totalResults'] > 0) {
+      if (jsonResponse['status'] == 'ok') {
+        if (jsonResponse['totalResults'] == 0) {
+          return List<Articles>.empty();
+        }
         final List<dynamic> data = jsonResponse['articles'];
         return data
             .map((article) => Articles.fromJson(article))
@@ -51,7 +57,7 @@ class NewsRepository {
                 article.source?.name?.isNotEmpty == true)
             .toList();
       } else {
-        throw Exception('Failed to load top headlines');
+        throw Exception('Failed to load search results');
       }
     } catch (e) {
       throw Exception('Failed to load top headlines: $e');
@@ -82,7 +88,10 @@ class NewsRepository {
     try {
       final response = await client.getUri(uri, cancelToken: cancelToken);
       final jsonResponse = response.data;
-      if (jsonResponse['status'] == 'ok' && jsonResponse['totalResults'] > 0) {
+      if (jsonResponse['status'] == 'ok') {
+        if (jsonResponse['totalResults'] == 0) {
+          return List<Articles>.empty();
+        }
         final List<dynamic> data = jsonResponse['articles'];
         return data
             .map((article) => Articles.fromJson(article))
@@ -153,7 +162,7 @@ Future<List<Articles>> fetchNews(
 
   // Fetch data based on the query or top headlines.
   //if query is not empty and category is null, search the news with query
-  if (query.isNotEmpty && category == null) {
+  if (query.isNotEmpty && category == 'general') {
     return newsRepo.searchNews(
       page: page,
       query: query,
@@ -163,7 +172,7 @@ Future<List<Articles>> fetchNews(
   } else {
     return newsRepo.fetchTopHeadlines(
       page: page,
-      country: country,
+      query: query,
       category: category,
       pageSize: pageSize,
       cancelToken: cancelToken,

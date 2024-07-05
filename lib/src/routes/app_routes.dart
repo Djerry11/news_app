@@ -32,7 +32,7 @@ class AppRoutes {
       GlobalKey<NavigatorState>(debugLabel: 'profileKey');
 
   static final router = GoRouter(
-    initialLocation: '/profile',
+    initialLocation: '/home',
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       // // Onboarding Page ;; First page to be shown

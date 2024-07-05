@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/features/explore/data/news_query_notifier.dart';
 import 'package:news_app/src/features/explore/presentation/widgets/new_search_filter.dart';
+import 'package:news_app/src/localization/extensions.dart';
 
 class NewsSearchBar extends ConsumerStatefulWidget {
   const NewsSearchBar({super.key, required this.isConnected});
@@ -47,7 +48,7 @@ class _SearchBarState extends ConsumerState<NewsSearchBar> {
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.zero,
                           isDense: true,
-                          hintText: 'Search ',
+                          hintText: 'Search '.hardcoded,
                           hintStyle: Theme.of(context)
                               .textTheme
                               .bodySmall!

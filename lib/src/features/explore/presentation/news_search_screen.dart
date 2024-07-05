@@ -27,6 +27,7 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
   final ScrollController _scrollController = ScrollController();
   var selectedCategoryIndex = 0;
   var selectedCategory = NewsCategory.general;
+  var queryCategory = 'general';
 
   @override
   void initState() {
@@ -48,7 +49,8 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
   void onSelectCategory(NewsCategory category) {
     setState(() {
       selectedCategory = category;
-      print('Selected Category: $selectedCategory');
+      queryCategory = category.name;
+      // print('Selected Category: $selectedCategory');
     });
   }
 
@@ -168,8 +170,8 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
   }
 
   Widget showSearchContents(String query) {
-    final responseAsync =
-        ref.watch(fetchNewsProvider(page: _currentPage, query: query));
+    final responseAsync = ref.watch(fetchNewsProvider(
+        page: _currentPage, query: query, category: queryCategory));
     return RefreshIndicator(
       onRefresh: () async {
         // Reset the current page and invalidate the provider to refresh the data.
@@ -239,6 +241,7 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
   }
 
   Future<void> onRefresh() async {
+    //TODO:Change Onrefresh with animations
     // Reset the current page and invalidate the provider to refresh the data.
     setState(() {
       _currentPage = 1;
