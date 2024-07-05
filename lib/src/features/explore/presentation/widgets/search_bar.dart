@@ -7,21 +7,16 @@ import 'package:news_app/src/features/explore/presentation/widgets/new_search_fi
 import 'package:news_app/src/localization/extensions.dart';
 
 class NewsSearchBar extends ConsumerStatefulWidget {
-  const NewsSearchBar({super.key, required this.isConnected});
+  const NewsSearchBar(
+      {super.key, required this.isConnected, required this.queryController});
   final bool isConnected;
+  final TextEditingController queryController;
+
   @override
   ConsumerState<NewsSearchBar> createState() => _SearchBarState();
 }
 
 class _SearchBarState extends ConsumerState<NewsSearchBar> {
-  final _controller = TextEditingController();
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -42,8 +37,8 @@ class _SearchBarState extends ConsumerState<NewsSearchBar> {
                 Expanded(
                   child: Center(
                     child: TextField(
-                        controller: _controller,
-                        style: const TextStyle(color: Colors.black),
+                        controller: widget.queryController,
+                        style: const TextStyle(color: Colors.black54),
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.zero,
@@ -58,11 +53,9 @@ class _SearchBarState extends ConsumerState<NewsSearchBar> {
                           FocusManager.instance.primaryFocus?.unfocus();
                         },
                         onChanged: (text) {
-                          if (text.isNotEmpty) {
-                            ref
-                                .read(newsQueryNotifierProvider.notifier)
-                                .setQuery(text);
-                          }
+                          ref
+                              .read(newsQueryNotifierProvider.notifier)
+                              .setQuery(text);
                         }),
                   ),
                 ),

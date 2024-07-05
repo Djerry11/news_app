@@ -21,7 +21,7 @@ final newsRepositoryProvider = AutoDisposeProvider<NewsRepository>.internal(
 );
 
 typedef NewsRepositoryRef = AutoDisposeProviderRef<NewsRepository>;
-String _$fetchNewsHash() => r'e69ea2652a800fb4567c6cee6da5ab913b3e74ab';
+String _$fetchNewsHash() => r'1f4e8ca1df06751efac570c26705943ff3b2322c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -64,7 +64,6 @@ class FetchNewsFamily extends Family<AsyncValue<List<Articles>>> {
   /// Copied from [fetchNews].
   FetchNewsProvider call({
     int page = 1,
-    String query = '',
     String? sortBy,
     String country = 'us',
     String? category,
@@ -72,7 +71,6 @@ class FetchNewsFamily extends Family<AsyncValue<List<Articles>>> {
   }) {
     return FetchNewsProvider(
       page: page,
-      query: query,
       sortBy: sortBy,
       country: country,
       category: category,
@@ -86,7 +84,6 @@ class FetchNewsFamily extends Family<AsyncValue<List<Articles>>> {
   ) {
     return call(
       page: provider.page,
-      query: provider.query,
       sortBy: provider.sortBy,
       country: provider.country,
       category: provider.category,
@@ -118,7 +115,6 @@ class FetchNewsProvider extends AutoDisposeFutureProvider<List<Articles>> {
   /// Copied from [fetchNews].
   FetchNewsProvider({
     int page = 1,
-    String query = '',
     String? sortBy,
     String country = 'us',
     String? category,
@@ -127,7 +123,6 @@ class FetchNewsProvider extends AutoDisposeFutureProvider<List<Articles>> {
           (ref) => fetchNews(
             ref as FetchNewsRef,
             page: page,
-            query: query,
             sortBy: sortBy,
             country: country,
             category: category,
@@ -142,7 +137,6 @@ class FetchNewsProvider extends AutoDisposeFutureProvider<List<Articles>> {
           dependencies: FetchNewsFamily._dependencies,
           allTransitiveDependencies: FetchNewsFamily._allTransitiveDependencies,
           page: page,
-          query: query,
           sortBy: sortBy,
           country: country,
           category: category,
@@ -157,7 +151,6 @@ class FetchNewsProvider extends AutoDisposeFutureProvider<List<Articles>> {
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.page,
-    required this.query,
     required this.sortBy,
     required this.country,
     required this.category,
@@ -165,7 +158,6 @@ class FetchNewsProvider extends AutoDisposeFutureProvider<List<Articles>> {
   }) : super.internal();
 
   final int page;
-  final String query;
   final String? sortBy;
   final String country;
   final String? category;
@@ -185,7 +177,6 @@ class FetchNewsProvider extends AutoDisposeFutureProvider<List<Articles>> {
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         page: page,
-        query: query,
         sortBy: sortBy,
         country: country,
         category: category,
@@ -203,7 +194,6 @@ class FetchNewsProvider extends AutoDisposeFutureProvider<List<Articles>> {
   bool operator ==(Object other) {
     return other is FetchNewsProvider &&
         other.page == page &&
-        other.query == query &&
         other.sortBy == sortBy &&
         other.country == country &&
         other.category == category &&
@@ -214,7 +204,6 @@ class FetchNewsProvider extends AutoDisposeFutureProvider<List<Articles>> {
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, page.hashCode);
-    hash = _SystemHash.combine(hash, query.hashCode);
     hash = _SystemHash.combine(hash, sortBy.hashCode);
     hash = _SystemHash.combine(hash, country.hashCode);
     hash = _SystemHash.combine(hash, category.hashCode);
@@ -227,9 +216,6 @@ class FetchNewsProvider extends AutoDisposeFutureProvider<List<Articles>> {
 mixin FetchNewsRef on AutoDisposeFutureProviderRef<List<Articles>> {
   /// The parameter `page` of this provider.
   int get page;
-
-  /// The parameter `query` of this provider.
-  String get query;
 
   /// The parameter `sortBy` of this provider.
   String? get sortBy;
@@ -250,8 +236,6 @@ class _FetchNewsProviderElement
 
   @override
   int get page => (origin as FetchNewsProvider).page;
-  @override
-  String get query => (origin as FetchNewsProvider).query;
   @override
   String? get sortBy => (origin as FetchNewsProvider).sortBy;
   @override

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:news_app/src/common_widgets/news_list_tile/news_list_tile.dart';
-import 'package:news_app/src/common_widgets/news_list_tile/news_tile_shimmer.dart';
-import 'package:news_app/src/common_widgets/something_went_wrong.dart';
+
 import 'package:news_app/src/core/theme/data/theme_provider.dart';
-import 'package:news_app/src/dummy_article.dart';
 
 class TestPage extends ConsumerWidget {
   const TestPage({super.key});

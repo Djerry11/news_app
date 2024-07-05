@@ -80,15 +80,15 @@ class TrendingNewsItem extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
-                  stops: const [0.1, 0.3],
+                  stops: const [0.1, 0.4],
                   colors: [
-                    Colors.black.withOpacity(1.0),
+                    Colors.black.withOpacity(0.8),
                     Colors.black.withOpacity(0.0),
                   ],
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
+                padding: const EdgeInsets.only(left: 8, right: 8),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,

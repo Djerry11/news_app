@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/news_list_tile.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/news_tile_shimmer.dart';
 import 'package:news_app/src/common_widgets/no_internet_connection.dart';
@@ -27,7 +28,8 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
   final ScrollController _scrollController = ScrollController();
   var selectedCategoryIndex = 0;
   var selectedCategory = NewsCategory.general;
-  var queryCategory = 'general';
+  var selectedQueryCategory = 'general';
+  final TextEditingController _queryController = TextEditingController();
 
   @override
   void initState() {
@@ -49,7 +51,7 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
   void onSelectCategory(NewsCategory category) {
     setState(() {
       selectedCategory = category;
-      queryCategory = category.name;
+      selectedQueryCategory = category.name;
       // print('Selected Category: $selectedCategory');
     });
   }
@@ -57,12 +59,15 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
   @override
   void dispose() {
     _scrollController.dispose();
+    _queryController.dispose();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: Colors.black,
       body: SafeArea(
         child: Consumer(
           builder: (context, ref, child) {
@@ -103,6 +108,7 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
                   ),
                 ),
                 NewsSearchBar(
+                  queryController: _queryController,
                   isConnected: isOnline,
                 ),
                 SingleChildScrollView(
@@ -146,19 +152,27 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
                 const SizedBox(height: 16),
                 Flexible(
                   child: isSearchTextEmpty
-                      ? const SingleChildScrollView(
-                          child: SomethingWentWrong(
-                            imagePath: 'assets/images/oops2.png',
-                            message: 'Search for news ...',
-                            showOops: false,
+                      ? SingleChildScrollView(
+                          child: Center(
+                            child: Lottie.asset(
+                              'assets/animations/search_anim.json',
+                              height: 200,
+                            ),
                           ),
+                          // SomethingWentWrong(
+                          //   imagePath: 'assets/images/oops2.png',
+                          //   message: 'Search for news ...',
+                          //   showOops: false,
+                          // ),
                         )
                       : isOnline
-                          ? showSearchContents(query)
-                          : NoInternetConnection(
-                              onRefresh: () async {
-                                onRefresh();
-                              },
+                          ? showSearchContents()
+                          : SingleChildScrollView(
+                              child: NoInternetConnection(
+                                onRefresh: () async {
+                                  onRefresh();
+                                },
+                              ),
                             ),
                 ),
               ],
@@ -169,9 +183,9 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
     );
   }
 
-  Widget showSearchContents(String query) {
-    final responseAsync = ref.watch(fetchNewsProvider(
-        page: _currentPage, query: query, category: queryCategory));
+  Widget showSearchContents() {
+    final responseAsync = ref.watch(
+        fetchNewsProvider(page: _currentPage, category: selectedQueryCategory));
     return RefreshIndicator(
       onRefresh: () async {
         // Reset the current page and invalidate the provider to refresh the data.
@@ -244,11 +258,16 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
     //TODO:Change Onrefresh with animations
     // Reset the current page and invalidate the provider to refresh the data.
     setState(() {
+      _queryController.clear();
       _currentPage = 1;
     });
+
     ref.invalidate(fetchNewsProvider);
+
     try {
-      await ref.read(fetchNewsProvider(page: 1).future);
+      await ref.read(
+          fetchNewsProvider(page: _currentPage, category: selectedQueryCategory)
+              .future);
     } catch (e) {
       // Handle error silently as the provider error state is managed inside the ListView.
     }

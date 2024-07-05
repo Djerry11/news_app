@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:news_app/src/core/network/news_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'news_query_notifier.g.dart';
@@ -24,9 +25,14 @@ class NewsQueryNotifier extends _$NewsQueryNotifier {
     if (_debounceTimer != null) {
       _debounceTimer!.cancel();
     }
-    _debounceTimer = Timer(const Duration(milliseconds: 500), () {
+    ref.invalidate(fetchNewsProvider);
+    _debounceTimer = Timer(const Duration(milliseconds: 1000), () {
       // only update the state once the query has been debounced
       state = query;
     });
+  }
+
+  void clearQuery() {
+    state = '';
   }
 }

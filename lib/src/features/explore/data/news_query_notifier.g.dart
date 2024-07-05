@@ -6,7 +6,7 @@ part of 'news_query_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$newsQueryNotifierHash() => r'cebe0b6beb3464eb3294d18f31087450f235a876';
+String _$newsQueryNotifierHash() => r'fdd940c110d975523ce28d7ef055ca2f6c82349b';
 
 /// A notifier class to keep track of the search query (with debouncing)
 ///

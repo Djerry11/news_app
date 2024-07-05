@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:news_app/src/core/models/articles.dart';
 import 'package:news_app/src/core/network/internet_service.dart';
 import 'package:news_app/src/core/utils/dio_provider.dart';
 import 'package:news_app/src/core/utils/utils.dart';
+import 'package:news_app/src/features/explore/data/news_query_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'news_repository.g.dart';
@@ -122,7 +122,6 @@ NewsRepository newsRepository(NewsRepositoryRef ref) => NewsRepository(
 Future<List<Articles>> fetchNews(
   FetchNewsRef ref, {
   int page = 1,
-  String query = '',
   String? sortBy,
   String country = 'us',
   String? category,
@@ -130,6 +129,7 @@ Future<List<Articles>> fetchNews(
 }) async {
   final newsRepo = ref.watch(newsRepositoryProvider);
   final isOnline = ref.watch(connectivityNotifierProvider);
+  final query = ref.watch(newsQueryNotifierProvider);
 
   if (!isOnline) {
     throw Exception('No Internet Connection');
