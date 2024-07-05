@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 
 class SomethingWentWrong extends StatelessWidget {
   const SomethingWentWrong(
-      {super.key, this.onRefresh, this.imagePath, this.message});
+      {super.key, this.onRefresh, this.imagePath, this.message, this.showOops});
   final VoidCallback? onRefresh;
   final String? imagePath;
   final String? message;
+  final bool? showOops;
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +26,16 @@ class SomethingWentWrong extends StatelessWidget {
                   child: Image.asset(
                       imagePath ?? 'assets/images/somethingwrong.png'),
                 ),
-                const Positioned(
-                  right: 0,
-                  child: Text(
-                    'Oops!!!',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 20,
+                Visibility(
+                  visible: showOops ?? true,
+                  child: Positioned(
+                    right: 0,
+                    child: Text(
+                      'Oops!!!',
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
                     ),
                   ),
                 ),
@@ -39,11 +43,11 @@ class SomethingWentWrong extends StatelessWidget {
             ),
             Text(
               message ?? 'Something Went Wrong,\n Please try again.',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-                fontSize: 20,
-              ),
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontSize: 16,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
               textAlign: TextAlign.center,
             ),
             Visibility(

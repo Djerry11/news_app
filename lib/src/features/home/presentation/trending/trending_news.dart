@@ -36,16 +36,19 @@ class TrendingNewsHeader extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+              Text(
                 'Breaking news!',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: Theme.of(context)
+                    .textTheme
+                    .displayLarge!
+                    .copyWith(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               IconButton(
                 onPressed: () {
                   //TODO: Implement the see all button
                 },
                 icon: const Icon(
-                  Icons.settings,
+                  Icons.horizontal_rule,
                 ),
               ),
             ],

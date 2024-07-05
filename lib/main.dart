@@ -49,11 +49,11 @@ class _MyAppState extends ConsumerState<MyApp> {
         return Stack(
           children: [
             child!,
-            if (isOnline)
+            if (!isOnline)
               CustomSnackbar(
                 iconData: Icons.wifi_off,
                 message: 'No Internet Connection',
-                isVisible: true,
+                isVisible: !isOnline,
                 iconColor: Colors.red,
                 onDismissed: () {
                   // setState(() {

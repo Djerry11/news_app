@@ -10,7 +10,7 @@ const customTextTheme = TextTheme(
   bodyLarge: TextStyle(
     fontFamily: 'OpenSans',
     fontVariations: [
-      FontVariation('wght', 400),
+      FontVariation('wght', 500),
     ],
   ),
   bodyMedium: TextStyle(
@@ -29,7 +29,7 @@ const customTextTheme = TextTheme(
   titleSmall: TextStyle(
     fontFamily: 'OpenSans',
     fontVariations: [
-      FontVariation('wght', 600),
+      FontVariation('wght', 400),
     ],
   ),
 );

@@ -3,7 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/favorite_button.dart';
 import 'package:news_app/src/core/models/articles.dart';
-import 'package:news_app/src/localization/string_hardcoded.dart';
+import 'package:news_app/src/localization/extensions.dart';
 import 'package:news_app/src/routes/app_routes.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -20,7 +20,7 @@ class TrendingNewsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final imageUrl = article.urlToImage;
     final trendingTitle = article.title;
-    final trendingDescription = article.description;
+    final trendingSource = article.source!.name;
     final cacheWidth = maxWidth;
 
     return GestureDetector(
@@ -45,7 +45,10 @@ class TrendingNewsItem extends StatelessWidget {
               blurRadius: 10,
             ),
           ],
-          border: Border.all(color: Colors.grey.withOpacity(0.5), width: 1),
+          border: Border.all(
+            color: Colors.grey.withOpacity(0.5),
+            width: 2,
+          ),
         ),
         child: Stack(
           children: [
@@ -78,8 +81,9 @@ class TrendingNewsItem extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
+                  stops: const [0.1, 0.3],
                   colors: [
-                    Colors.black.withOpacity(0.7),
+                    Colors.black.withOpacity(1.0),
                     Colors.black.withOpacity(0.0),
                   ],
                 ),
@@ -91,33 +95,41 @@ class TrendingNewsItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      trendingTitle!.toUpperCase(),
-                      maxLines: 1,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                      "$trendingSource",
+                      maxLines: 2,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          fontSize: 12,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      trendingTitle!,
+                      maxLines: 2,
+                      style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
                     ),
                     const SizedBox(height: 8),
-                    Text(
-                      trendingDescription!,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.white70,
-                      ),
-                    ),
+                    // Text(
+                    //   trendingDescription!,
+                    //   maxLines: 2,
+                    //   overflow: TextOverflow.ellipsis,
+                    //   style: const TextStyle(
+                    //     fontSize: 12,
+                    //     color: Colors.white70,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
             ),
-            Positioned(
-              top: 10,
-              right: 10,
-              child: FavoriteButton(article: article),
-            ),
+            // Positioned(
+            //   top: 10,
+            //   right: 10,
+            //   child: FavoriteButton(article: article),
+            // ),
           ],
         ),
       ),

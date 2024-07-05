@@ -5,6 +5,7 @@ final lightThemeData = ThemeData(
   brightness: Brightness.light,
   primaryColor: Colors.white,
   scaffoldBackgroundColor: Colors.white,
+
   //----------------------------------------
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.white,

@@ -27,16 +27,21 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final isOnline = ref.watch(connectivityNotifierProvider);
+    const isOnline = true;
+    // final isOnline = ref.watch(connectivityNotifierProvider);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'News World',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.menu_sharp,
+              fill: 0.9,
+              size: 28,
+              color: Colors.black87,
             ),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
           ),
         ),
         body: isOnline
@@ -54,12 +59,14 @@ class _HomePageState extends ConsumerState<HomePage> {
                       category: category.name,
                     ),
                     // News List
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'For you',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                        style:
+                            Theme.of(context).textTheme.displayLarge!.copyWith(
+                                  fontSize: 18,
+                                ),
                       ),
                     ),
                     NewsList(

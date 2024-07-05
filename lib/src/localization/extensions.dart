@@ -6,6 +6,15 @@ extension StringHardcoded on String {
   String get hardcoded => this;
 }
 
+extension StringCasingExtension on String {
+  String toCapitalized() =>
+      length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';
+  String toTitleCase() => replaceAll(RegExp(' +'), ' ')
+      .split(' ')
+      .map((str) => str.toCapitalized())
+      .join(' ');
+}
+
 // resize the image according to the device's pixel ratio
 extension ImageExtension on num {
   int cacheSize(BuildContext context) {

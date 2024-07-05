@@ -1,5 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/features/explore/data/news_query_notifier.dart';
 
@@ -25,16 +26,16 @@ class _SearchBarState extends ConsumerState<NewsSearchBar> {
       height: 70,
       child: Center(
         child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+          margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
           decoration: BoxDecoration(
-            color: Colors.grey.shade200,
+            color: Colors.grey.shade100,
             borderRadius: const BorderRadius.all(Radius.circular(50)),
           ),
           child: Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Row(
               children: [
-                const Icon(Icons.search, color: Colors.grey),
+                const Icon(CupertinoIcons.search, color: Colors.grey),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Center(
@@ -45,14 +46,17 @@ class _SearchBarState extends ConsumerState<NewsSearchBar> {
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.zero,
                           isDense: true,
-                          hintText: 'Search news',
-                          hintStyle: TextStyle(color: Colors.grey.shade400),
+                          hintText: 'Search ',
+                          hintStyle: Theme.of(context)
+                              .textTheme
+                              .bodySmall!
+                              .copyWith(color: Colors.grey),
                         ),
                         onEditingComplete: () {
                           FocusManager.instance.primaryFocus?.unfocus();
                         },
                         onChanged: (text) {
-                          if (widget.isConnected) {
+                          if (text.isNotEmpty) {
                             ref
                                 .read(newsQueryNotifierProvider.notifier)
                                 .setQuery(text);
@@ -60,6 +64,10 @@ class _SearchBarState extends ConsumerState<NewsSearchBar> {
                         }),
                   ),
                 ),
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(CupertinoIcons.slider_horizontal_3,
+                        color: Colors.grey)),
               ],
             ),
           ),

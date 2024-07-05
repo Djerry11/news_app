@@ -16,49 +16,54 @@ class NewsInfoText extends StatelessWidget {
     final time = formattedDate.last;
     return Expanded(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            source ?? 'Unknown Source',
-            maxLines: 1,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-            ),
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Text(source ?? 'Unknown Source',
+                maxLines: 1,
+                style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                      fontSize: 11,
+                      color: Colors.grey.shade600,
+                    )),
           ),
           Text(
             title ?? 'No title',
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-            ),
+            maxLines: 2,
+            overflow: TextOverflow.clip,
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black54,
+                ),
           ),
           const SizedBox(height: 5),
           Text(
             author ?? 'Unknown Author',
             maxLines: 1,
-            style: const TextStyle(
-              color: Colors.black45,
-              fontWeight: FontWeight.bold,
-              fontSize: 8,
-            ),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  fontSize: 8,
+                  fontWeight: FontWeight.bold,
+                ),
           ),
-          Expanded(
+          Flexible(
             child: Row(
               children: [
                 const Icon(Icons.calendar_today, size: 8),
                 Text(
                   date,
-                  style: TextStyle(color: Colors.grey.shade600, fontSize: 8),
+                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                        fontSize: 8,
+                      ),
                 ),
                 const SizedBox(width: 12),
                 const Icon(Icons.timelapse, size: 8),
                 Text(
                   time,
-                  style: TextStyle(color: Colors.grey.shade600, fontSize: 8),
+                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                        fontSize: 8,
+                      ),
                 ),
               ],
             ),

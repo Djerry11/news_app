@@ -37,10 +37,10 @@ class _ScaffoldWithNestedNavigationState
               label: 'Explore'),
           NavigationDestination(
               icon: Icon(
-                Icons.favorite_outline,
+                Icons.bookmark,
                 color: Colors.purple,
               ),
-              label: 'Favorites'),
+              label: 'Bookmarks'),
           NavigationDestination(
             icon: Icon(Icons.person),
             label: 'Profile',

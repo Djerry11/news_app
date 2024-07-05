@@ -152,7 +152,8 @@ Future<List<Articles>> fetchNews(
   });
 
   // Fetch data based on the query or top headlines.
-  if (query.isNotEmpty) {
+  //if query is not empty and category is null, search the news with query
+  if (query.isNotEmpty && category == null) {
     return newsRepo.searchNews(
       page: page,
       query: query,

@@ -19,14 +19,8 @@ class NoInternetConnection extends StatelessWidget {
               width: 300,
               child: Image.asset('assets/images/no_internet.png'),
             ),
-            Text(
-              'INTERNET CONNECTION',
-              style: GoogleFonts.purplePurse(
-                decoration: TextDecoration.lineThrough,
-                fontWeight: FontWeight.w700,
-                fontSize: 20,
-              ),
-            ),
+            Text('INTERNET CONNECTION',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith()),
             const SizedBox(height: 10),
             const Text(
               'Please check your connection and then \nRefresh the page.',

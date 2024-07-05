@@ -24,8 +24,8 @@ class FavoriteButton extends ConsumerWidget {
             : bookmarkNotifier.addFavorites(article);
       },
       icon: Icon(
-        isFavorite ? Icons.favorite : Icons.favorite_border_outlined,
-        color: isFavorite ? Colors.red : Colors.deepPurpleAccent,
+        isFavorite ? Icons.bookmark : Icons.bookmark_outline,
+        color: Colors.deepPurple,
         size: 30,
       ),
     );
