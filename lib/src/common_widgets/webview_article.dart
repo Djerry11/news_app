@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/favorite_button.dart';
 import 'package:news_app/src/core/models/articles.dart';
+import 'package:news_app/src/features/home/presentation/widgets/round_icon_button.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -97,11 +98,15 @@ class _WebViewArticleState extends State<WebViewArticle> {
     final source = widget.article.source!.name;
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            context.pop();
-          },
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: RoundIconButton(
+            onPressed: () {
+              context.pop();
+            },
+            icon: Icons.arrow_back_ios_rounded,
+            iconColor: Colors.black87,
+          ),
         ),
         title: Text(
           source!,
@@ -112,14 +117,18 @@ class _WebViewArticleState extends State<WebViewArticle> {
               ),
         ),
         actions: [
-          FavoriteButton(article: widget.article),
-          const SizedBox(
-            width: 3,
-          ),
           IconButton(
             onPressed: _openBrowser,
             icon: const Icon(Icons.share),
           ),
+          const SizedBox(
+            width: 3,
+          ),
+          FavoriteButton(article: widget.article),
+          const SizedBox(
+            width: 3,
+          ),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
         ],
       ),
       body: SafeArea(
