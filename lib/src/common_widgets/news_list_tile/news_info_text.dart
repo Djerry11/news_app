@@ -25,18 +25,13 @@ class NewsInfoText extends StatelessWidget {
                 maxLines: 1,
                 style: Theme.of(context).textTheme.displayLarge!.copyWith(
                       fontSize: 11,
-                      color: Colors.grey.shade600,
                     )),
           ),
           Text(
             title ?? 'No title',
             maxLines: 2,
             overflow: TextOverflow.clip,
-            style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black54,
-                ),
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           const SizedBox(height: 5),
           Text(

@@ -7,8 +7,8 @@ class NewsTileShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.black45,
-      highlightColor: Colors.black12,
+      baseColor: Theme.of(context).shadowColor,
+      highlightColor: Theme.of(context).highlightColor,
       child: Stack(
         children: [
           Padding(

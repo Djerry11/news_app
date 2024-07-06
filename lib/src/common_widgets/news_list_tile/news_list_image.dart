@@ -17,8 +17,6 @@ class NewsListImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         child: CachedNetworkImage(
           imageUrl: imageUrl!,
-          // imageUrl:
-          //     'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D',
           fit: BoxFit.cover,
           height: imageWidth,
           width: imageWidth,

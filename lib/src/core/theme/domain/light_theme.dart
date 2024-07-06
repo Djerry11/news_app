@@ -14,12 +14,29 @@ final lightThemeData = ThemeData(
     titleTextStyle: customTextTheme.displayLarge?.copyWith(color: Colors.black),
   ),
   //----------------------------------------
-  textTheme: customTextTheme.apply(
-    bodyColor: Colors.black,
-    displayColor: Colors.black,
+  textTheme: customTextTheme.copyWith(
+    titleSmall: const TextStyle(color: Colors.black54),
+    // bodyColor: Colors.black,
+    displayMedium: TextStyle(
+      fontFamily: 'Agbalumo',
+      fontSize: 28,
+      color: Colors.grey.shade600,
+    ),
+  ),
+
+  //------------------shimmer tile----------------------
+  highlightColor: Colors.black12,
+  shadowColor: Colors.black54,
+
+  //----------------------------------------
+  iconTheme: const IconThemeData(color: Colors.black54),
+  iconButtonTheme: IconButtonThemeData(
+    style: ButtonStyle(
+      iconColor: WidgetStateProperty.all(Colors.black54),
+      backgroundColor: WidgetStateProperty.all(Colors.grey.shade200),
+    ),
   ),
   //----------------------------------------
-  iconTheme: const IconThemeData(color: Colors.black),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: Colors.blue,
   ),

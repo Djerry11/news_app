@@ -85,14 +85,8 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: 'Discover\n'.hardcoded,
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium!
-                              .copyWith(
-                                color: const Color(0xFF867f7f),
-                              ),
-                        ),
+                            text: 'Discover\n'.hardcoded,
+                            style: Theme.of(context).textTheme.displayMedium!),
                         TextSpan(
                           text: 'News from all around the world'.hardcoded,
                           style:
@@ -119,10 +113,18 @@ class _NewsSearchScreenState extends ConsumerState<NewsSearchScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: ChoiceChip(
                           label: Text(
-                            category.name == 'general'
-                                ? 'All'
-                                : category.name.toCapitalized(),
-                          ),
+                              category.name == 'general'
+                                  ? 'All'
+                                  : category.name.toCapitalized(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    color: selectedCategory == category
+                                        ? Colors.white
+                                        : Colors.grey.shade700,
+                                  )),
                           showCheckmark: false,
                           shape: RoundedRectangleBorder(
                             side: const BorderSide(

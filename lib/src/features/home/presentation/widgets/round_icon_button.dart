@@ -16,13 +16,12 @@ class RoundIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       style: ButtonStyle(
-        backgroundColor: WidgetStatePropertyAll(
-          backgroundColor ?? Colors.grey.shade200,
-        ),
+        backgroundColor:
+            Theme.of(context).iconButtonTheme.style!.backgroundColor,
       ),
       icon: Icon(
         icon,
-        color: iconColor,
+        color: Theme.of(context).iconTheme.color,
       ),
       onPressed: onPressed,
     );

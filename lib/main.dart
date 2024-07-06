@@ -1,3 +1,4 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,40 +33,44 @@ class _MyAppState extends ConsumerState<MyApp> {
   Widget build(BuildContext context) {
     // print('showSnack: $showSnack');
     final themeMode = ref.watch(themeModeProvider);
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'News App',
-      routerConfig: AppRoutes.router,
-      darkTheme: darkThemeData,
-      themeMode: themeMode,
-      theme: lightThemeData,
-      builder: (context, child) {
-        // print(
-        //     'Widget is online rebuild: ${DateTime.now().millisecondsSinceEpoch}');
+    return ThemeProvider(
+        initTheme: darkThemeData,
+        builder: (context, myTheme) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            title: 'News App',
+            routerConfig: AppRoutes.router,
+            darkTheme: darkThemeData,
+            themeMode: themeMode,
+            theme: lightThemeData,
+            builder: (context, child) {
+              // print(
+              //     'Widget is online rebuild: ${DateTime.now().millisecondsSinceEpoch}');
 
-        final isOnline = ref.watch(connectivityNotifierProvider);
-        // print("isOnline changed: $isOnline");
+              final isOnline = ref.watch(connectivityNotifierProvider);
+              // print("isOnline changed: $isOnline");
 
-        return Stack(
-          children: [
-            child!,
-            if (!isOnline)
-              CustomSnackbar(
-                iconData: Icons.wifi_off,
-                message: 'No Internet Connection',
-                isVisible: !isOnline,
-                iconColor: Colors.red,
-                onDismissed: () {
-                  // setState(() {
-                  //   showSnack = !showSnack;
-                  // });
-                },
-              ),
+              return Stack(
+                children: [
+                  child!,
+                  if (!isOnline)
+                    CustomSnackbar(
+                      iconData: Icons.wifi_off,
+                      message: 'No Internet Connection',
+                      isVisible: !isOnline,
+                      iconColor: Colors.red,
+                      onDismissed: () {
+                        // setState(() {
+                        //   showSnack = !showSnack;
+                        // });
+                      },
+                    ),
 
-            // print('Floating Action Button Pressed');
-          ],
-        );
-      },
-    );
+                  // print('Floating Action Button Pressed');
+                ],
+              );
+            },
+          );
+        });
   }
 }

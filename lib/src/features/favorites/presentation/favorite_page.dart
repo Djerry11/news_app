@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
+import 'package:news_app/src/common_widgets/connection_errors/something_went_wrong.dart';
 import 'package:news_app/src/common_widgets/news_list_tile/news_list_tile.dart';
+import 'package:news_app/src/common_widgets/news_list_tile/news_tile_shimmer.dart';
 import 'package:news_app/src/features/favorites/data/favorite_controller.dart';
 import 'package:news_app/src/localization/extensions.dart';
 
@@ -27,6 +30,11 @@ class FavoritePage extends ConsumerWidget {
         ),
         body: localArticlesAsync.when(
           data: (articles) {
+            if (articles.isEmpty) {
+              return Center(
+                child: Lottie.asset('assets/animations/empty_animation.json'),
+              );
+            }
             return ListView.builder(
               itemCount: articles.length,
               itemBuilder: (context, index) {
@@ -49,9 +57,14 @@ class FavoritePage extends ConsumerWidget {
             );
           },
           error: (_, __) {
-            return const Center(child: Text('Error'));
+            return const Flexible(child: SomethingWentWrong());
           },
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => ListView.builder(
+              itemExtent: 120,
+              itemCount: 3,
+              itemBuilder: (context, index) {
+                return const NewsTileShimmer();
+              }),
         ),
       ),
     );

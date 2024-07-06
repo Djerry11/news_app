@@ -48,7 +48,6 @@ class TrendingNewsHeader extends StatelessWidget {
                 style: Theme.of(context).textTheme.displayLarge!.copyWith(
                       fontSize: 24,
                       fontWeight: FontWeight.w300,
-                      color: Colors.grey.shade600,
                     ),
               ),
               const SizedBox(height: 5),

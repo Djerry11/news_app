@@ -18,6 +18,9 @@ class FavoriteButton extends ConsumerWidget {
         false;
 
     return IconButton(
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.all(Colors.transparent),
+      ),
       onPressed: () {
         isFavorite
             ? bookmarkNotifier.removeFavorites(article)
@@ -25,7 +28,7 @@ class FavoriteButton extends ConsumerWidget {
       },
       icon: Icon(
         isFavorite ? Icons.bookmark : Icons.bookmark_outline,
-        color: Colors.deepPurple,
+        color: Colors.deepPurpleAccent,
         size: 30,
       ),
     );

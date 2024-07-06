@@ -60,6 +60,7 @@ dependencies:
   flutter_dotenv: ^5.1.0
   google_fonts: ^6.2.1
   lottie: ^3.1.2
+  animated_theme_switcher: ^2.0.10
 dev_dependencies:
   flutter_test:
     sdk: flutter

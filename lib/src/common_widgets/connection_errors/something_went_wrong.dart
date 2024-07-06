@@ -44,7 +44,7 @@ class SomethingWentWrong extends StatelessWidget {
               message ?? 'Something Went Wrong,\n Please try again.',
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     fontSize: 16,
-                    color: Colors.black,
+                    // color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
               textAlign: TextAlign.center,

@@ -14,11 +14,22 @@ final darkThemeData = ThemeData(
   ),
   //----------------------------------------
   textTheme: customTextTheme.apply(
-    bodyColor: Colors.white,
-    displayColor: Colors.white,
+    // bodyColor: Colors.white,
+    displayColor: Colors.grey.shade100,
   ),
+  //------------------shimmer tile----------------------
+  highlightColor: Colors.white12,
+  shadowColor: Colors.grey.shade300,
+
   //----------------------------------------
   iconTheme: const IconThemeData(color: Colors.white),
+  iconButtonTheme: IconButtonThemeData(
+    style: ButtonStyle(
+      iconColor: WidgetStateProperty.all(Colors.white),
+      backgroundColor: WidgetStateProperty.all(Colors.grey.shade800),
+    ),
+  ),
+  //----------------------------------------
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: Colors.blue,
   ),

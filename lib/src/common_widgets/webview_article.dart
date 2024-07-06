@@ -56,18 +56,24 @@ class _WebViewArticleState extends State<WebViewArticle> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Open in Browser',
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              )),
-          content: const Text('Do you want to open this in the browser?',
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-              )),
+          title: Text('Open in Browser',
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  )),
+
+          //  TextStyle(
+          //   color: Colors.black,
+          //   fontWeight: FontWeight.bold,
+          //   fontSize: 20,
+          // )),
+          content: Text(
+            'Do you want to open this in the browser?',
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+          ),
           actions: [
             TextButton(
               onPressed: () {

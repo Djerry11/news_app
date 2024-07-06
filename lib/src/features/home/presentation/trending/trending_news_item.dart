@@ -97,17 +97,18 @@ class TrendingNewsItem extends StatelessWidget {
                       "$trendingSource",
                       maxLines: 2,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          fontSize: 12,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                     ),
                     Text(
                       trendingTitle!,
                       maxLines: 2,
                       style: Theme.of(context).textTheme.displayLarge!.copyWith(
                             fontSize: 18,
-                            color: Colors.white,
                             fontWeight: FontWeight.w500,
+                            color: Colors.white,
                           ),
                     ),
                     const SizedBox(height: 8),

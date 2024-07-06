@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
 const customTextTheme = TextTheme(
+  //news source section
   displayLarge: TextStyle(
     fontFamily: 'PlayfairDisplay',
     fontVariations: [
       FontVariation('wght', 700),
     ],
   ),
+  //Heading section app bar section
   displayMedium: TextStyle(
     fontFamily: 'Agbalumo',
-    fontSize: 30,
-    color: Color(0xFF867f7f),
+    fontSize: 28,
   ),
+  //trending news title
   bodyLarge: TextStyle(
     fontFamily: 'OpenSans',
+    color: Colors.white,
     fontVariations: [
       FontVariation('wght', 500),
     ],
@@ -31,10 +34,5 @@ const customTextTheme = TextTheme(
       FontVariation('wght', 400),
     ],
   ),
-  titleSmall: TextStyle(
-    fontFamily: 'OpenSans',
-    fontVariations: [
-      FontVariation('wght', 400),
-    ],
-  ),
+  //news list title
 );

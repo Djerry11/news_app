@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news_app/src/core/theme/data/theme_provider.dart';
 
 import 'package:news_app/src/core/utils/constants.dart';
 import 'package:news_app/src/features/home/presentation/widgets/newslist.dart';
 import 'package:news_app/src/features/home/presentation/trending/trending_news.dart';
 import 'package:news_app/src/features/home/presentation/widgets/round_icon_button.dart';
+import 'package:news_app/src/localization/extensions.dart';
 import 'package:news_app/src/providers/provider.dart';
 import 'package:news_app/src/routes/app_routes.dart';
 
@@ -45,17 +47,16 @@ class _HomePageState extends ConsumerState<HomePage> {
             leading: Padding(
               padding: const EdgeInsets.all(8.0),
               child: RoundIconButton(
-                onPressed: () {},
+                onPressed: () {
+                  ref.read(themeModeProvider.notifier).toggleTheme();
+                },
                 icon: Icons.menu,
                 iconColor: Colors.black87,
               ),
             ),
             title: Text(
-              'NewsPulse',
-              style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                    fontSize: 28,
-                    color: const Color(0xFF867f7f),
-                  ),
+              'NewsPulse'.hardcoded,
+              style: Theme.of(context).textTheme.displayMedium,
             ),
             actions: [
               RoundIconButton(

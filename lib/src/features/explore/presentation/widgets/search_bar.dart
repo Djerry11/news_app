@@ -46,8 +46,8 @@ class _SearchBarState extends ConsumerState<NewsSearchBar> {
                           hintText: 'Search '.hardcoded,
                           hintStyle: Theme.of(context)
                               .textTheme
-                              .bodySmall!
-                              .copyWith(color: Colors.grey),
+                              .titleSmall!
+                              .copyWith(color: Colors.grey.shade400),
                         ),
                         onEditingComplete: () {
                           FocusManager.instance.primaryFocus?.unfocus();
@@ -63,12 +63,16 @@ class _SearchBarState extends ConsumerState<NewsSearchBar> {
                   width: 10,
                 ),
                 IconButton(
+                    style: const ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                      Colors.transparent,
+                    )),
                     onPressed: () {
                       showFilterSheet(context, ref,
                           maxWidth: MediaQuery.of(context).size.width);
                     },
-                    icon: const Icon(CupertinoIcons.slider_horizontal_3,
-                        color: Colors.grey)),
+                    icon: Icon(CupertinoIcons.slider_horizontal_3,
+                        color: Colors.grey.shade800)),
               ],
             ),
           ),

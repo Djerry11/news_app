@@ -21,7 +21,7 @@ class TrendingNewsIndicator extends ConsumerWidget {
         dotWidth: 10,
         spacing: 10,
         dotColor: Color.fromARGB(255, 199, 184, 184),
-        activeDotColor: Colors.orange,
+        activeDotColor: Colors.deepPurpleAccent,
         paintStyle: PaintingStyle.fill,
       ),
     );
