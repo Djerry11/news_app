@@ -46,4 +46,6 @@ final lightThemeData = ThemeData(
     selectedItemColor: Colors.blue,
     unselectedItemColor: Colors.grey,
   ),
+  // -------------
+  dialogBackgroundColor: Colors.black,
 );

@@ -1,8 +1,11 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/core/theme/data/theme_provider.dart';
+import 'package:news_app/src/core/theme/domain/dark_theme.dart';
+import 'package:news_app/src/core/theme/domain/light_theme.dart';
 
 import 'package:news_app/src/core/utils/constants.dart';
 import 'package:news_app/src/features/home/presentation/widgets/newslist.dart';
@@ -41,18 +44,23 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget build(BuildContext context) {
     // const isOnline = true;
     // final isOnline = ref.watch(connectivityNotifierProvider);
+
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
             leading: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: RoundIconButton(
-                onPressed: () {
-                  ref.read(themeModeProvider.notifier).toggleTheme();
-                },
-                icon: Icons.menu,
-                iconColor: Colors.black87,
-              ),
+              child: ThemeSwitcher(builder: (context) {
+                return RoundIconButton(
+                  onPressed: () {
+                    ref.read(themeProvider.notifier).toggleTheme(context);
+                  },
+                  icon: ref.watch(themeProvider.notifier).isDarkMode()
+                      ? CupertinoIcons.moon_stars
+                      : CupertinoIcons.sun_max_fill,
+                  iconColor: Colors.black87,
+                );
+              }),
             ),
             title: Text(
               'NewsPulse'.hardcoded,

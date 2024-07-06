@@ -71,7 +71,7 @@ class _CustomSnackbarState extends State<CustomSnackbar>
           margin: const EdgeInsets.all(8.0),
           padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
-            color: Colors.black,
+            color: Theme.of(context).dialogBackgroundColor,
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: Stack(
@@ -96,6 +96,10 @@ class _CustomSnackbarState extends State<CustomSnackbar>
                   right: 0,
                   top: -10,
                   child: IconButton(
+                    style: const ButtonStyle(
+                      backgroundColor:
+                          WidgetStatePropertyAll(Colors.transparent),
+                    ),
                     icon:
                         const Icon(CupertinoIcons.refresh, color: Colors.green),
                     onPressed: () {

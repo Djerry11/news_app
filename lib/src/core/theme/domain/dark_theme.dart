@@ -39,4 +39,6 @@ final darkThemeData = ThemeData(
     selectedItemColor: Colors.blue,
     unselectedItemColor: Colors.grey,
   ),
+  //----------------
+  dialogBackgroundColor: Colors.grey.shade700,
 );

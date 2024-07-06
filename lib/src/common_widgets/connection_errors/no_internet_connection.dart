@@ -25,13 +25,11 @@ class NoInternetConnection extends StatelessWidget {
                       fontSize: 20,
                     )),
             const SizedBox(height: 10),
-            const Text(
+            Text(
               'Please check your connection and then \nRefresh the page.',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black54,
-                fontSize: 16,
-              ),
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    fontSize: 16,
+                  ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),

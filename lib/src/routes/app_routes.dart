@@ -28,11 +28,11 @@ class AppRoutes {
       GlobalKey<NavigatorState>(debugLabel: 'homeKey');
   static final _catNavigatorKey =
       GlobalKey<NavigatorState>(debugLabel: 'catKey');
-  static final _profileNavigatorKey =
-      GlobalKey<NavigatorState>(debugLabel: 'profileKey');
+  // static final _profileNavigatorKey =
+  //     GlobalKey<NavigatorState>(debugLabel: 'profileKey');
 
   static final router = GoRouter(
-    initialLocation: '/discover',
+    initialLocation: '/home',
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       // // Onboarding Page ;; First page to be shown
@@ -91,16 +91,16 @@ class AppRoutes {
             ],
           ),
           // Profile Branch
-          StatefulShellBranch(
-            navigatorKey: _profileNavigatorKey,
-            routes: [
-              GoRoute(
-                path: '/profile',
-                name: AppRoute.profile.name,
-                builder: (context, state) => const TestPage(),
-              ),
-            ],
-          ),
+          // StatefulShellBranch(
+          //   navigatorKey: _profileNavigatorKey,
+          //   routes: [
+          //     GoRoute(
+          //       path: '/profile',
+          //       name: AppRoute.profile.name,
+          //       builder: (context, state) => const TestPage(),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
 

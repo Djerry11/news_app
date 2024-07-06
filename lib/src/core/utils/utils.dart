@@ -46,7 +46,7 @@ String getApiKey() {
   // if (newsApiKey.isEmpty) {
   //   throw AssertionError('NEWS_API_KEY is not set');
   // }
-  final newsApiKey = dotenv.env['NEWS_API_KEY3'];
+  final newsApiKey = dotenv.env['NEWS_API_KEY1'];
   return newsApiKey!;
 }
 
