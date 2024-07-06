@@ -29,12 +29,14 @@ class FavoritePage extends ConsumerWidget {
           ),
         ),
         body: localArticlesAsync.when(
-          data: (articles) {
+          data: (orgArticles) {
+            final articles = orgArticles.reversed.toList();
             if (articles.isEmpty) {
               return Center(
                 child: Lottie.asset('assets/animations/empty_animation.json'),
               );
             }
+
             return ListView.builder(
               itemCount: articles.length,
               itemBuilder: (context, index) {

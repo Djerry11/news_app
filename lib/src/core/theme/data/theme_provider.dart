@@ -10,7 +10,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 class NewsThemeData extends Notifier<ThemeData> {
   @override
   build() {
-    return lightThemeData;
+    return darkThemeData;
   }
 
   void toggleTheme(BuildContext context) {
@@ -25,3 +25,36 @@ class NewsThemeData extends Notifier<ThemeData> {
 
 final themeProvider =
     NotifierProvider<NewsThemeData, ThemeData>(NewsThemeData.new);
+
+//
+class TrendingSliderValue extends Notifier<bool> {
+  @override
+  build() {
+    return true;
+  }
+
+  void toggle() {
+    state = !state;
+  }
+}
+
+final trendingSliderProvider =
+    NotifierProvider<TrendingSliderValue, bool>(TrendingSliderValue.new);
+
+//disable button for 2 seconds
+class DisableButton extends Notifier<bool> {
+  @override
+  build() {
+    return false;
+  }
+
+  void disable() {
+    state = true;
+    Future.delayed(const Duration(seconds: 2, milliseconds: 100), () {
+      state = false;
+    });
+  }
+}
+
+final disableButtonProvider =
+    NotifierProvider<DisableButton, bool>(DisableButton.new);

@@ -4,6 +4,7 @@ A Flutter news application that showcases trending and breaking news. The app su
 
 ## Features
 
+- Dual Theme (Light and Dark)
 - Breaking news section
 - Search functionality
 - Favorite articles
@@ -14,12 +15,10 @@ A Flutter news application that showcases trending and breaking news. The app su
 
 ## Screenshots
 
-![thumbnail](screenshots/finalAiO.png)
-
-| ![Home Page](screenshots/news_sc1.png)      | ![Trending News](screenshots/news_sc2.png) | ![Search News](screenshots/news_sc3.png)   |
-| ------------------------------------------- | ------------------------------------------ | ------------------------------------------ |
-| ![No Internet](screenshots/news_sc5.png)    | ![News Detail](screenshots/news_sc4.png)   | ![Splash Screen](screenshots/news_sc6.png) |
-| ![News Not Found](screenshots/news_sc7.png) | ![Favorite News](screenshots/news_sc8.png) | ![Web News](screenshots/news_sc9.png)      |
+![thumbnail](screenshots/duothumbnail.png)
+![thumbnail](screenshots/dualtoneAio.png)
+![thumbnail](screenshots/banner.png)
+![thumbnail](screenshots/banner2.png) |
 
 ## Getting Started
 

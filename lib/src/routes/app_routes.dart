@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:news_app/src/common_widgets/test.dart';
 import 'package:news_app/src/core/models/articles.dart';
 import 'package:news_app/src/features/explore/presentation/news_search_screen.dart';
 import 'package:news_app/src/features/favorites/presentation/favorite_page.dart';
@@ -90,17 +89,6 @@ class AppRoutes {
               ),
             ],
           ),
-          // Profile Branch
-          // StatefulShellBranch(
-          //   navigatorKey: _profileNavigatorKey,
-          //   routes: [
-          //     GoRoute(
-          //       path: '/profile',
-          //       name: AppRoute.profile.name,
-          //       builder: (context, state) => const TestPage(),
-          //     ),
-          //   ],
-          // ),
         ],
       ),
 

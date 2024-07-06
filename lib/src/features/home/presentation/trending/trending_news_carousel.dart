@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/core/network/news_repository.dart';
+import 'package:news_app/src/core/theme/data/theme_provider.dart';
 import 'package:news_app/src/features/home/presentation/trending/trending_news_item.dart';
 import 'package:news_app/src/providers/provider.dart';
 import 'package:shimmer/shimmer.dart';
@@ -19,10 +19,6 @@ class TrendingNewsCarousel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var autoPlay = false;
-    if (!kDebugMode) {
-      autoPlay = !autoPlay;
-    }
     final maxWidth = MediaQuery.of(context).size.width;
     final trendingNewsAsync = ref.watch(
       fetchNewsProvider(
@@ -38,7 +34,7 @@ class TrendingNewsCarousel extends ConsumerWidget {
         return CarouselSlider.builder(
           key: const PageStorageKey('carousel_slider'),
           options: CarouselOptions(
-            autoPlay: autoPlay,
+            autoPlay: ref.watch(trendingSliderProvider),
             height: 250,
             viewportFraction: 0.9,
             autoPlayCurve: Curves.fastOutSlowIn,

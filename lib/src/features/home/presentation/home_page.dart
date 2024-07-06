@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app/src/core/theme/data/theme_provider.dart';
-import 'package:news_app/src/core/theme/domain/dark_theme.dart';
-import 'package:news_app/src/core/theme/domain/light_theme.dart';
-
 import 'package:news_app/src/core/utils/constants.dart';
 import 'package:news_app/src/features/home/presentation/widgets/newslist.dart';
 import 'package:news_app/src/features/home/presentation/trending/trending_news.dart';
@@ -51,15 +48,23 @@ class _HomePageState extends ConsumerState<HomePage> {
             leading: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ThemeSwitcher(builder: (context) {
-                return RoundIconButton(
-                  onPressed: () {
-                    ref.read(themeProvider.notifier).toggleTheme(context);
-                  },
-                  icon: ref.watch(themeProvider.notifier).isDarkMode()
-                      ? CupertinoIcons.moon_stars
-                      : CupertinoIcons.sun_max_fill,
-                  iconColor: Colors.black87,
-                );
+                return Consumer(builder: (context, ref, child) {
+                  final isDisabled = ref.watch(disableButtonProvider);
+                  final isDark = ref.watch(themeProvider.notifier).isDarkMode();
+                  return RoundIconButton(
+                    onPressed: () {
+                      !isDisabled
+                          ? ref
+                              .read(themeProvider.notifier)
+                              .toggleTheme(context)
+                          : () {};
+                    },
+                    icon: !isDark
+                        ? CupertinoIcons.moon_stars
+                        : CupertinoIcons.sun_max_fill,
+                    iconColor: Colors.black87,
+                  );
+                });
               }),
             ),
             title: Text(
@@ -75,8 +80,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                 iconColor: Colors.black87,
               ),
               RoundIconButton(
-                onPressed: () {},
-                icon: Icons.notifications_outlined,
+                onPressed: () {
+                  ref.watch(trendingSliderProvider.notifier).toggle();
+                },
+                icon: ref.watch(trendingSliderProvider)
+                    ? CupertinoIcons.play_arrow
+                    : Icons.stop,
                 iconColor: Colors.black87,
               ),
               const SizedBox(width: 15)
